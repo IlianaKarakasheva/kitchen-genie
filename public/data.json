@@ -1,0 +1,67 @@
+{
+    "recipes": [
+        {
+            "id":1,
+            "title": "Recipe 1",
+            "decription":"desc for recipe1",
+            "ingredients": [
+                "potatoes", "tomatoes", "onions", "fish", "chicken"
+            ],
+            "time": 15,
+            "rating": 3,
+            "image": "photo01.jpg",
+            "userid":  17,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":7,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":11,
+                    "userid":8,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":5,
+                    "userid":71,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+
+        },
+        {
+            "id":2,
+            "title": "Recipe 2",
+            "decription":"desc for recipe2",
+            "ingredients": [
+                "potatoes", "tomatoes", "fish"
+            ],
+            "time": 15,
+            "rating": 3,
+            "image": "photo02.jpg",
+            "userid":  17,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":7,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":11,
+                    "userid":8,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":5,
+                    "userid":71,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+
+        }
+    ]
+}
+  
