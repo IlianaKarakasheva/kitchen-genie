@@ -20,10 +20,8 @@ const recipes = Data.recipes;
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">Гладни ли сте?</h1>
-      <p class="lead text-muted">Вижте какво имате в хладилника и разберете какяво можете да сготвите - сами</p>
-      <p>
+      <p class="lead text-muted">Вижте какво имате в хладилника и разберете какяво можете да сготвите - сами</p>        
         <a href="#" class="btn btn-primary my-2">Търсене</a>
-      </p>
     </div>
   </div>
 </section>
@@ -42,8 +40,9 @@ const recipes = Data.recipes;
                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">{item.title}</text></svg>
       
                 <div class="card-body text-black">
-                  <p class="card-text ">Products needed:</p>
-                  <p>
+                  <p class="card-text ">{item.title}</p>
+                  <ul>
+                    products needed:
                     {
                       item.ingredients.map((ingredient) => {
                         return (
@@ -51,12 +50,12 @@ const recipes = Data.recipes;
                         )
                       })
                     }
-                  </p>
+                  </ul>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <a href ="recipe" class="btn btn-sm btn-outline-secondary">View</a>
+                      <a href ={"/recipes/"+ item.id} class="btn btn-sm btn-outline-secondary">View</a>
                     </div>
-                    <small class="text-muted">9 min</small>
+                    <small class="text-muted">{item.time}min</small>
                   </div>
                 </div>
               </div> 

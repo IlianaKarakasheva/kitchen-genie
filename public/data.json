@@ -36,11 +36,42 @@
             "title": "Recipe 2",
             "decription":"desc for recipe2",
             "ingredients": [
+                "potatoes", "tomatoes", "fish", "carrots"
+            ],
+            "time": 12,
+            "rating": 2,
+            "image": "photo02.jpg",
+            "userid":  11,
+            "comments":[
+                {
+                    "comment_id":52,
+                    "userid":22,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":10,
+                    "userid":9,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":21,
+                    "userid":333,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+
+        },
+        {
+            "id":3,
+            "title": "Recipe 3",
+            "decription":"desc for recipe3",
+            "ingredients": [
                 "potatoes", "tomatoes", "fish"
             ],
             "time": 15,
             "rating": 3,
-            "image": "photo02.jpg",
+            "image": "photo03.jpg",
             "userid":  17,
             "comments":[
                 {
@@ -56,6 +87,37 @@
                 {
                     "comment_id":5,
                     "userid":71,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+
+        },
+        {
+            "id":4,
+            "title": "Recipe 4",
+            "decription":"desc for recipe4",
+            "ingredients": [
+                "potatoes", "tomatoes", "fish", "peas", "peppers"
+            ],
+            "time": 15,
+            "rating": 5,
+            "image": "photo04.jpg",
+            "userid":  127,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":117,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":121,
+                    "userid":38,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":45,
+                    "userid":221,
                     "description":"great"
                 }
             ],
