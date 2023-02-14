@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import Data from '../../public/data.json'
-
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -20,8 +19,10 @@ const recipes = Data.recipes;
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">Гладни ли сте?</h1>
-      <p class="lead text-muted">Вижте какво имате в хладилника и разберете какяво можете да сготвите - сами</p>        
-        <a href="#" class="btn btn-primary my-2">Търсене</a>
+      <p class="lead text-muted">Вижте какво имате в хладилника и разберете какяво можете да сготвите</p>        
+        {/* <a href="#" class="btn btn-primary my-2">Търсене</a> */}
+          <input type="text" placeholder="Tъpceнe" name="search" class="fa fa-search"/>
+
     </div>
   </div>
 </section>
@@ -37,22 +38,25 @@ const recipes = Data.recipes;
             return (
               <div class="col">
                 <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">{item.title}</text></svg>
-      
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><text x="50%" y="50%" fill="#eceeef" dy=".3em"><img src="public\images\recipe1.jpg" /></text></svg>
                 <div class="card-body text-black">
+                  
                   <p class="card-text ">{item.title}</p>
-                  <ul>
-                    products needed:
+                  <l>
+                    PRODUCTS NEEDED:
+                    <br></br>
                     {
                       item.ingredients.map((ingredient) => {
                         return (
-                          <li>{ingredient}</li>
+                          <l> {ingredient} </l>
                         )
                       })
                     }
-                  </ul>
+                    <br></br>
+                  </l>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+                      <br></br>
                       <a href ={"/recipes/"+ item.id} class="btn btn-sm btn-outline-secondary">View</a>
                     </div>
                     <small class="text-muted">{item.time}min</small>

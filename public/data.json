@@ -2,14 +2,14 @@
     "recipes": [
         {
             "id":1,
-            "title": "Recipe 1",
-            "decription":"desc for recipe1",
+            "title": "Spaghetti Bolognese",
+            "decription":"Cook spaghetti according to package instructions until al dente, drain and set aside. In a large, heat olive oil over medium heat. Add ground beef and cook until browned, breaking up any large clumps with a wooden spoon or spatula. Add onion and garlic to the skillet and cook until softened, about 3-4 minutes. Add diced tomatoes, tomato paste, oregano, basil, salt, and black pepper to the skillet. Stir to combine. Simmer the sauce for 10-15 minutes, stirring occasionally, until it has thickened slightly. Serve the spaghetti with the sauce on top, and sprinkle with Parmesan cheese. ",
             "ingredients": [
-                "potatoes", "tomatoes", "onions", "fish", "chicken"
+                "cheese", "tomatoes", "onions", "garlic", "beef", "tomatoes", "spaghetti"
             ],
             "time": 15,
             "rating": 3,
-            "image": "photo01.jpg",
+            "image": "recipe1.jpg",
             "userid":  17,
             "comments":[
                 {
@@ -33,10 +33,10 @@
         },
         {
             "id":2,
-            "title": "Recipe 2",
-            "decription":"desc for recipe2",
+            "title": "Tomato soup",
+            "decription":"In a large pot or Dutch oven, heat olive oil over medium heat. Add onion and garlic and cook until softened, about 3-4 minutes. Add the whole peeled tomatoes, including their juice, to the pot. Break up the tomatoes with a wooden spoon or spatula. Add broth, sugar, basil, salt, and black pepper to the pot. Stir to combine. Bring the soup to a simmer and let it cook for 20-30 minutes, stirring occasionally. Use an immersion blender or transfer the soup to a blender to puree until smooth. Be careful when blending hot liquids. If using heavy cream, add it to the soup and stir to combine. Simmer the soup for an additional 5-10 minutes until heated through. Serve the tomato soup hot, and enjoy!",
             "ingredients": [
-                "potatoes", "tomatoes", "fish", "carrots"
+                "onions", "tomatoes", "garlic", "chicken broth", "basil", "sugar"
             ],
             "time": 12,
             "rating": 2,
@@ -64,10 +64,10 @@
         },
         {
             "id":3,
-            "title": "Recipe 3",
-            "decription":"desc for recipe3",
+            "title": "Musaka",
+            "decription":"Preheat the oven to 375°F (190°C). Sprinkle salt over the eggplant slices and let them sit for 30 minutes to remove excess moisture. Rinse and pat dry with paper towels. In a large skillet, heat olive oil over medium heat. Add ground beef, onion, and garlic, and cook until the beef is browned and the onion is soft. Add diced tomatoes, paprika, salt, black pepper, and cinnamon to the skillet. Stir to combine. Layer the sliced potatoes on the bottom of a 9x13 inch (23x33 cm) baking dish. Add half of the beef mixture on top of the potatoes, then add a layer of eggplant slices. Repeat with another layer of beef mixture, and another layer of eggplant slices on top. In a small bowl, whisk together the yogurt and beaten eggs. Pour the yogurt mixture over the top of the eggplant layer. Sprinkle Parmesan cheese on top of the yogurt mixture. Bake the musaka for 45-50 minutes until golden brown on top and bubbling around the edges. Let the musaka rest for 10 minutes before serving.",
             "ingredients": [
-                "potatoes", "tomatoes", "fish"
+                "eggplant", "ground beef", "onions", "garlic", "potatoes","tomatoes", "paprika", "plain yogurt", "eggs"
             ],
             "time": 15,
             "rating": 3,
@@ -95,10 +95,10 @@
         },
         {
             "id":4,
-            "title": "Recipe 4",
-            "decription":"desc for recipe4",
+            "title": "French fries",
+            "decription":"Rinse the potato sticks in cold water to remove excess starch, and pat them dry with paper towels. In a large pot or Dutch oven, heat vegetable oil over medium-high heat to 325°F (165°C). Working in batches, add the potato sticks to the hot oil and fry for about 3-4 minutes until slightly softened but not yet browned. Use a slotted spoon or tongs to remove the fries from the oil and drain them on a paper towel-lined plate. Increase the heat of the oil to 375°F (190°C). Add the partially fried fries back into the hot oil in batches, and fry for another 2-3 minutes until golden brown and crispy. Use a slotted spoon or tongs to remove the fries from the oil and drain them on a paper towel-lined plate. Season the fries with salt to taste, and serve them hot. Enjoy your crispy and delicious French Fries!",
             "ingredients": [
-                "potatoes", "tomatoes", "fish", "peas", "peppers"
+                "potatoes", "oil"
             ],
             "time": 15,
             "rating": 5,
@@ -122,7 +122,36 @@
                 }
             ],
             "date":"01.01.2023"
-
+        },
+        {
+            "id":5,
+            "title": "Chicken soup",
+            "decription":"In a large pot or Dutch oven, add the whole chicken and 12 cups of water. Bring to a boil over high heat. Reduce the heat to low, and let the chicken simmer for 1-2 hours until the meat is cooked through and falls off the bone. Use tongs to carefully remove the chicken from the pot, and set it aside to cool. Add sliced carrots, celery, onion, garlic, bay leaf, thyme, rosemary, salt, and black pepper to the pot. Simmer for 30 minutes to make the soup broth. While the broth is simmering, remove the chicken meat from the bones and shred or cut it into bite-sized pieces. Add the chicken meat back to the pot, and simmer for another 10-15 minutes. Add egg noodles to the pot, and cook according to package instructions until al dente. Serve the chicken soup hot, and enjoy!",
+            "ingredients": [
+                "chicken", "carrots", "celery", "onions", "garlic", "bay leaf", "egg noodles"
+            ],
+            "time": 15,
+            "rating": 5,
+            "image": "photo05.jpg",
+            "userid":  127,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":117,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":121,
+                    "userid":38,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":45,
+                    "userid":221,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
         }
     ]
 }

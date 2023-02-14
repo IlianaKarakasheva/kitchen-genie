@@ -19,8 +19,9 @@ export default function Recipe() {
     });
     // const recipe = Data.recipes;
     console.log(recipe)
-  return (
+    return (
 
     <h1>recipe {id}</h1>
   )
+  
     }

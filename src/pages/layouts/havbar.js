@@ -9,13 +9,19 @@ export default function Navbar() {
             </a>
                 <ul class= " navbar-nav">
                     <li class="navbar-item">
-                        <a href="signin" class="navbar-link">
-                            <button class="btn btn-sm btn-outline-secondary">Login</button>
+                        <a href="profile" class="navbar-link">
+                            <button class="btn btn-sm btn-outline-secondary">My profile</button>
+                        </a>
+                        <a href="saved" class="navbar-link">
+                            <button class="btn btn-sm btn-outline-secondary">Saved Recipes</button>
                         </a>
                     </li>
                 </ul>
                 <ul class= " navbar-nav">
                     <li class="navbar-item">
+                        <a href="signin" class="navbar-link">
+                            <button class="btn btn-sm btn-outline-secondary">Login</button>
+                        </a>
                         <a href="signup" class="navbar-link">
                             <button class="btn btn-sm btn-outline-secondary">Register</button>
                         </a>

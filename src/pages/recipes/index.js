@@ -9,5 +9,6 @@ export default function Recipes() {
   return (
 
     <h1>recipes</h1>
+    
   )
     }
