@@ -9,10 +9,10 @@ export default function Navbar() {
             </a>
                 <ul class= " navbar-nav">
                     <li class="navbar-item">
-                        <a href="profile" class="navbar-link">
+                        <a href="my-profile" class="navbar-link">
                             <button class="btn btn-sm btn-outline-secondary">My profile</button>
                         </a>
-                        <a href="saved" class="navbar-link">
+                        <a href="saved-recipes" class="navbar-link">
                             <button class="btn btn-sm btn-outline-secondary">Saved Recipes</button>
                         </a>
                     </li>

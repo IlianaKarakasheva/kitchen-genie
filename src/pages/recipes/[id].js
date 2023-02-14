@@ -12,7 +12,7 @@ export default function Recipe() {
     const router = useRouter()
     console.log(router.query)
     const{id} = router.query
-    const recipe = Data.recipes.filter((r) => {
+    const recipe = Data.recipes.find((r) => {
       console.log(r.id)
       console.log(id)
      return  r.id == id
@@ -20,8 +20,7 @@ export default function Recipe() {
     // const recipe = Data.recipes;
     console.log(recipe)
     return (
-
-    <h1>recipe {id}</h1>
+      <h1>{recipe?.title} {id}</h1>
   )
   
     }

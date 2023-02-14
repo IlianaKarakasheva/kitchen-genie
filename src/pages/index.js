@@ -19,7 +19,7 @@ const recipes = Data.recipes;
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">Гладни ли сте?</h1>
-      <p class="lead text-muted">Вижте какво имате в хладилника и разберете какяво можете да сготвите</p>        
+      <p class="lead text-muted">Вижте какво имате в хладилника и разберете какво можете да сготвите</p>        
         {/* <a href="#" class="btn btn-primary my-2">Търсене</a> */}
           <input type="text" placeholder="Tъpceнe" name="search" class="fa fa-search"/>
 
@@ -38,7 +38,17 @@ const recipes = Data.recipes;
             return (
               <div class="col">
                 <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><text x="50%" y="50%" fill="#eceeef" dy=".3em"><img src="public\images\recipe1.jpg" /></text></svg>
+                {/* <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><text x="50%" y="50%" fill="#eceeef" dy=".3em"><img src="public\images\recipe1.jpg" /></text></svg> */}
+                {/* <Image
+                src="/images/recipe1.jpg"
+                alt="Vercel Logo"
+                className={styles.vercelLogo}
+                // width="100%"
+                // height={24}
+               fill
+                priority
+              /> */}
+              <img src="images/recipe1.jpg"/>
                 <div class="card-body text-black">
                   
                   <p class="card-text ">{item.title}</p>
