@@ -34,42 +34,34 @@ const recipes = Data.recipes;
       
 
         {
-          recipes.map((item) => {
+          recipes.map((recipe) => {
             return (
               <div class="col">
                 <div class="card shadow-sm">
                 {/* <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><text x="50%" y="50%" fill="#eceeef" dy=".3em"><img src="public\images\recipe1.jpg" /></text></svg> */}
-                {/* <Image
-                src="/images/recipe1.jpg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                // width="100%"
-                // height={24}
-               fill
-                priority
-              /> */}
-              <img src="images/recipe1.jpg"/>
+              
+          <img src={`/images/${recipe.image ? recipe.image:"nophoto.jpg" }`} alt={recipe?.title}/>
+
                 <div class="card-body text-black">
                   
-                  <p class="card-text ">{item.title}</p>
-                  <l>
+                  <p class="card-text ">{recipe.title}</p>
                     PRODUCTS NEEDED:
                     <br></br>
                     {
-                      item.ingredients.map((ingredient) => {
+                      recipe.ingredients.map((ingredient) => {
                         return (
-                          <l> {ingredient} </l>
+                          // <l class="btn btn-outline-secondary margin-2">{ingredient}</l>
+                          <l>, {ingredient}</l>
                         )
                       })
                     }
                     <br></br>
-                  </l>
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex justify-content-between align-recipes-center">
                     <div class="btn-group">
                       <br></br>
-                      <a href ={"/recipes/"+ item.id} class="btn btn-sm btn-outline-secondary">View</a>
+                      <a href ={"/recipes/"+ recipe.id} class="btn btn-sm btn-outline-secondary">View</a>
                     </div>
-                    <small class="text-muted">{item.time}min</small>
+                    <small class="text-muted">{recipe.time}min</small>
                   </div>
                 </div>
               </div> 

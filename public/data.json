@@ -3,7 +3,7 @@
         {
             "id":1,
             "title": "Spaghetti Bolognese",
-            "decription":"Cook spaghetti according to package instructions until al dente, drain and set aside. In a large, heat olive oil over medium heat. Add ground beef and cook until browned, breaking up any large clumps with a wooden spoon or spatula. Add onion and garlic to the skillet and cook until softened, about 3-4 minutes. Add diced tomatoes, tomato paste, oregano, basil, salt, and black pepper to the skillet. Stir to combine. Simmer the sauce for 10-15 minutes, stirring occasionally, until it has thickened slightly. Serve the spaghetti with the sauce on top, and sprinkle with Parmesan cheese. ",
+            "instructions":"Cook spaghetti according to package instructions until al dente, drain and set aside. In a large, heat olive oil over medium heat. Add ground beef and cook until browned, breaking up any large clumps with a wooden spoon or spatula. Add onion and garlic to the skillet and cook until softened, about 3-4 minutes. Add diced tomatoes, tomato paste, oregano, basil, salt, and black pepper to the skillet. Stir to combine. Simmer the sauce for 10-15 minutes, stirring occasionally, until it has thickened slightly. Serve the spaghetti with the sauce on top, and sprinkle with Parmesan cheese. ",
             "ingredients": [
                 "cheese", "tomatoes", "onions", "garlic", "beef", "tomatoes", "spaghetti"
             ],
@@ -34,13 +34,13 @@
         {
             "id":2,
             "title": "Tomato soup",
-            "decription":"In a large pot or Dutch oven, heat olive oil over medium heat. Add onion and garlic and cook until softened, about 3-4 minutes. Add the whole peeled tomatoes, including their juice, to the pot. Break up the tomatoes with a wooden spoon or spatula. Add broth, sugar, basil, salt, and black pepper to the pot. Stir to combine. Bring the soup to a simmer and let it cook for 20-30 minutes, stirring occasionally. Use an immersion blender or transfer the soup to a blender to puree until smooth. Be careful when blending hot liquids. If using heavy cream, add it to the soup and stir to combine. Simmer the soup for an additional 5-10 minutes until heated through. Serve the tomato soup hot, and enjoy!",
+            "instructions":"In a large pot or Dutch oven, heat olive oil over medium heat. Add onion and garlic and cook until softened, about 3-4 minutes. Add the whole peeled tomatoes, including their juice, to the pot. Break up the tomatoes with a wooden spoon or spatula. Add broth, sugar, basil, salt, and black pepper to the pot. Stir to combine. Bring the soup to a simmer and let it cook for 20-30 minutes, stirring occasionally. Use an immersion blender or transfer the soup to a blender to puree until smooth. Be careful when blending hot liquids. If using heavy cream, add it to the soup and stir to combine. Simmer the soup for an additional 5-10 minutes until heated through. Serve the tomato soup hot, and enjoy!",
             "ingredients": [
                 "onions", "tomatoes", "garlic", "chicken broth", "basil", "sugar"
             ],
             "time": 12,
             "rating": 2,
-            "image": "photo02.jpg",
+            "image": "recipe2.jpg",
             "userid":  11,
             "comments":[
                 {
@@ -65,13 +65,13 @@
         {
             "id":3,
             "title": "Musaka",
-            "decription":"Preheat the oven to 375°F (190°C). Sprinkle salt over the eggplant slices and let them sit for 30 minutes to remove excess moisture. Rinse and pat dry with paper towels. In a large skillet, heat olive oil over medium heat. Add ground beef, onion, and garlic, and cook until the beef is browned and the onion is soft. Add diced tomatoes, paprika, salt, black pepper, and cinnamon to the skillet. Stir to combine. Layer the sliced potatoes on the bottom of a 9x13 inch (23x33 cm) baking dish. Add half of the beef mixture on top of the potatoes, then add a layer of eggplant slices. Repeat with another layer of beef mixture, and another layer of eggplant slices on top. In a small bowl, whisk together the yogurt and beaten eggs. Pour the yogurt mixture over the top of the eggplant layer. Sprinkle Parmesan cheese on top of the yogurt mixture. Bake the musaka for 45-50 minutes until golden brown on top and bubbling around the edges. Let the musaka rest for 10 minutes before serving.",
+            "instructions":"Preheat the oven to 375°F (190°C). Sprinkle salt over the eggplant slices and let them sit for 30 minutes to remove excess moisture. Rinse and pat dry with paper towels. In a large skillet, heat olive oil over medium heat. Add ground beef, onion, and garlic, and cook until the beef is browned and the onion is soft. Add diced tomatoes, paprika, salt, black pepper, and cinnamon to the skillet. Stir to combine. Layer the sliced potatoes on the bottom of a 9x13 inch (23x33 cm) baking dish. Add half of the beef mixture on top of the potatoes, then add a layer of eggplant slices. Repeat with another layer of beef mixture, and another layer of eggplant slices on top. In a small bowl, whisk together the yogurt and beaten eggs. Pour the yogurt mixture over the top of the eggplant layer. Sprinkle Parmesan cheese on top of the yogurt mixture. Bake the musaka for 45-50 minutes until golden brown on top and bubbling around the edges. Let the musaka rest for 10 minutes before serving.",
             "ingredients": [
                 "eggplant", "ground beef", "onions", "garlic", "potatoes","tomatoes", "paprika", "plain yogurt", "eggs"
             ],
             "time": 15,
             "rating": 3,
-            "image": "photo03.jpg",
+            "image": "",
             "userid":  17,
             "comments":[
                 {
@@ -96,13 +96,13 @@
         {
             "id":4,
             "title": "French fries",
-            "decription":"Rinse the potato sticks in cold water to remove excess starch, and pat them dry with paper towels. In a large pot or Dutch oven, heat vegetable oil over medium-high heat to 325°F (165°C). Working in batches, add the potato sticks to the hot oil and fry for about 3-4 minutes until slightly softened but not yet browned. Use a slotted spoon or tongs to remove the fries from the oil and drain them on a paper towel-lined plate. Increase the heat of the oil to 375°F (190°C). Add the partially fried fries back into the hot oil in batches, and fry for another 2-3 minutes until golden brown and crispy. Use a slotted spoon or tongs to remove the fries from the oil and drain them on a paper towel-lined plate. Season the fries with salt to taste, and serve them hot. Enjoy your crispy and delicious French Fries!",
+            "instructions":"Rinse the potato sticks in cold water to remove excess starch, and pat them dry with paper towels. In a large pot or Dutch oven, heat vegetable oil over medium-high heat to 325°F (165°C). Working in batches, add the potato sticks to the hot oil and fry for about 3-4 minutes until slightly softened but not yet browned. Use a slotted spoon or tongs to remove the fries from the oil and drain them on a paper towel-lined plate. Increase the heat of the oil to 375°F (190°C). Add the partially fried fries back into the hot oil in batches, and fry for another 2-3 minutes until golden brown and crispy. Use a slotted spoon or tongs to remove the fries from the oil and drain them on a paper towel-lined plate. Season the fries with salt to taste, and serve them hot. Enjoy your crispy and delicious French Fries!",
             "ingredients": [
                 "potatoes", "oil"
             ],
             "time": 15,
             "rating": 5,
-            "image": "photo04.jpg",
+            "image": "",
             "userid":  127,
             "comments":[
                 {
@@ -126,13 +126,193 @@
         {
             "id":5,
             "title": "Chicken soup",
-            "decription":"In a large pot or Dutch oven, add the whole chicken and 12 cups of water. Bring to a boil over high heat. Reduce the heat to low, and let the chicken simmer for 1-2 hours until the meat is cooked through and falls off the bone. Use tongs to carefully remove the chicken from the pot, and set it aside to cool. Add sliced carrots, celery, onion, garlic, bay leaf, thyme, rosemary, salt, and black pepper to the pot. Simmer for 30 minutes to make the soup broth. While the broth is simmering, remove the chicken meat from the bones and shred or cut it into bite-sized pieces. Add the chicken meat back to the pot, and simmer for another 10-15 minutes. Add egg noodles to the pot, and cook according to package instructions until al dente. Serve the chicken soup hot, and enjoy!",
+            "instructions":"In a large pot or Dutch oven, add the whole chicken and 12 cups of water. Bring to a boil over high heat. Reduce the heat to low, and let the chicken simmer for 1-2 hours until the meat is cooked through and falls off the bone. Use tongs to carefully remove the chicken from the pot, and set it aside to cool. Add sliced carrots, celery, onion, garlic, bay leaf, thyme, rosemary, salt, and black pepper to the pot. Simmer for 30 minutes to make the soup broth. While the broth is simmering, remove the chicken meat from the bones and shred or cut it into bite-sized pieces. Add the chicken meat back to the pot, and simmer for another 10-15 minutes. Add egg noodles to the pot, and cook according to package instructions until al dente. Serve the chicken soup hot, and enjoy!",
             "ingredients": [
                 "chicken", "carrots", "celery", "onions", "garlic", "bay leaf", "egg noodles"
             ],
             "time": 15,
             "rating": 5,
-            "image": "photo05.jpg",
+            "image": "",
+            "userid":  127,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":117,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":121,
+                    "userid":38,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":45,
+                    "userid":221,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+        },
+        {
+            "id":6,
+            "title": "Bean soup",
+            "instructions":"Rinse the dried white beans under cold water and soak them in water overnight, or at least for 8 hours. In a large pot or Dutch oven, heat olive oil over medium heat. Add chopped onion, carrots, and celery, and sauté until the vegetables are soft. Add diced tomatoes, tomato paste, paprika, salt, black pepper, bay leaf, and soaked white beans to the pot. Stir to combine. Pour in 6 cups of water, and bring the soup to a boil over high heat. Reduce the heat to low, and let the soup simmer for 1-2 hours until the beans are tender and the soup is thickened. If the soup is too thick, you can add more water. Serve the Bulgarian bean soup hot, garnished with chopped parsley.",
+            "ingredients": [
+                "white beans", "carrots", "tomatoes", "onions", "tomato paste", "bay leaf", "paprika"
+            ],
+            "time": 15,
+            "rating": 5,
+            "image": "",
+            "userid":  127,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":117,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":121,
+                    "userid":38,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":45,
+                    "userid":221,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+        },
+        {
+            "id":7,
+            "title": "Ceaser salad",
+            "instructions":"Cut the romaine lettuce into bite-sized pieces and place them in a large salad bowl. Add grated Parmesan cheese and croutons to the bowl. In a small mixing bowl, whisk together lemon juice, minced garlic, Dijon mustard, Worcestershire sauce, olive oil, salt, and black pepper until emulsified. Pour the Caesar salad dressing over the salad, and toss to coat the lettuce, cheese, and croutons evenly. Serve the Caesar salad cold, and enjoy!",
+            "ingredients": [
+                "lettuce", "cheese", "croutons", "lemon juice", "garlic", "mustard", "Worcestershire sauce", "olive oil"
+            ],
+            "time": 15,
+            "rating": 5,
+            "image": "",
+            "userid":  127,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":117,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":121,
+                    "userid":38,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":45,
+                    "userid":221,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+        },
+        {
+            "id":8,
+            "title": "Spaghetti Carbonara",
+            "instructions":"In a large pot or Dutch oven, add the whole chicken and 12 cupCook the spaghetti in a large pot of boiling salted water until al dente. While the spaghetti is cooking, cook the chopped bacon in a large skillet over medium heat until crispy. In a mixing bowl, whisk together eggs, grated Parmesan cheese, salt, and black pepper until well combined. When the spaghetti is done, reserve 1 cup of the pasta water, and drain the rest of the water. Add the spaghetti to the skillet with the cooked bacon, and toss to combine. Remove the skillet from heat, and pour the egg and cheese mixture over the spaghetti. Toss the spaghetti with the egg and cheese mixture quickly and vigorously, so that the heat of the pasta cooks the eggs and creates a creamy sauce. If the pasta is too dry, add some of the reserved pasta water to the skillet and toss again. Serve the spaghetti carbonara hot, and enjoy!s of water. Bring to a boil over high heat. Reduce the heat to low, and let the chicken simmer for 1-2 hours until the meat is cooked through and falls off the bone. Use tongs to carefully remove the chicken from the pot, and set it aside to cool. Add sliced carrots, celery, onion, garlic, bay leaf, thyme, rosemary, salt, and black pepper to the pot. Simmer for 30 minutes to make the soup broth. While the broth is simmering, remove the chicken meat from the bones and shred or cut it into bite-sized pieces. Add the chicken meat back to the pot, and simmer for another 10-15 minutes. Add egg noodles to the pot, and cook according to package instructions until al dente. Serve the chicken soup hot, and enjoy!",
+            "ingredients": [
+                "spaghetti", "bacon", "eggs", "cheese"
+            ],
+            "time": 15,
+            "rating": 5,
+            "image": "",
+            "userid":  127,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":117,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":121,
+                    "userid":38,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":45,
+                    "userid":221,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+        },
+        {
+            "id":9,
+            "title": "Mac n Cheese",
+            "instructions":"Cook the elbow macaroni in a large pot of boiling salted water until al dente. While the macaroni is cooking, melt the butter in a large saucepan over medium heat. Add the flour to the saucepan, and whisk continuously for 1-2 minutes until a paste forms. Gradually pour in the milk, whisking constantly to avoid lumps. Continue whisking and cooking the mixture for 5-7 minutes until the sauce thickens. Remove the saucepan from heat, and stir in the shredded cheddar cheese until it melts and the sauce is smooth. When the macaroni is done, drain the water and return the macaroni to the pot. Pour the cheese sauce over the macaroni, and toss to coat the pasta evenly. Season with salt and black pepper to taste. Serve the mac and cheese hot, and enjoy!",
+            "ingredients": [
+                "macaroni", "butter", "flour", "milk", "cheddar cheese"
+            ],
+            "time": 15,
+            "rating": 5,
+            "image": "",
+            "userid":  127,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":117,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":121,
+                    "userid":38,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":45,
+                    "userid":221,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+        },
+        {
+            "id":10,
+            "title": "Lentil soup",
+            "instructions":"Heat the olive oil in a large pot over medium heat. Add the chopped onion, carrots, and celery to the pot, and sauté for 5-7 minutes until softened. Add the minced garlic to the pot, and cook for 1-2 minutes until fragrant. Add the lentils, vegetable broth, bay leaf, ground cumin, and smoked paprika to the pot, and stir to combine. Bring the soup to a boil, then reduce the heat to low and simmer for 30-40 minutes until the lentils are tender. Remove the bay leaf from the soup, and season with salt and black pepper to taste. Serve the lentil soup hot, garnished with chopped fresh parsley.",
+            "ingredients": [
+                "lentil", "carrots", "celery", "onions", "garlic", "cumin", "paprika", "parsley", "bay leaf","vegetable broth"
+            ],
+            "time": 15,
+            "rating": 5,
+            "image": "",
+            "userid":  127,
+            "comments":[
+                {
+                    "comment_id":15,
+                    "userid":117,
+                    "description":"very usefull and tasty"
+                },
+                {
+                    "comment_id":121,
+                    "userid":38,
+                    "description":"awfull"
+                },
+                {
+                    "comment_id":45,
+                    "userid":221,
+                    "description":"great"
+                }
+            ],
+            "date":"01.01.2023"
+        },
+        {
+            "id":11,
+            "title": "Quinoa Salad with Roasted Vegetables",
+            "instructions":"Preheat the oven to 400°F (200°C). Rinse the quinoa in cold water, and then cook it in a saucepan with the water over medium heat for 15-20 minutes until the water is absorbed and the quinoa is cooked. While the quinoa is cooking, spread the chopped bell peppers, zucchini, and red onion on a baking sheet. Drizzle the olive oil over the vegetables, and sprinkle with salt, black pepper, and minced garlic. Roast the vegetables in the preheated oven for 20-25 minutes until they are tender and lightly browned. In a mixing bowl, combine the cooked quinoa, roasted vegetables, chopped fresh parsley, basil, and mint. Squeeze the lemon juice over the salad, and toss to combine. Serve the quinoa salad warm or chilled, and enjoy!",
+            "ingredients": [
+                "quinoa", "bell pepper", "zucchini", "onions", "garlic", "olive oil", "parsley", "basil", "mint"
+            ],
+            "time": 15,
+            "rating": 5,
+            "image": "",
             "userid":  127,
             "comments":[
                 {
