@@ -49,18 +49,18 @@ export default function Home() {
                               <br></br>
                               <blockquote className='card-ingredients'>
                                 {
-                                  recipe.ingredients.map((ingredient, index) => {
+
+                                  recipe.ingredients.slice(0, 4).map((ingredient, index) => {
                                     return (
                                       (index > 0) ? `, ${ingredient}` : ingredient
                                     )
                                   })
                                 }
-                                {/* {recipe?.ingredients.slice(0, 5).map((ingredient, index) => (
-                                  <div key={index}>{ingredient}</div>
-                                 ))}
+                                
                                     {recipe?.ingredients.length > 5 && (
                                       <div>etc.</div>
-                                    )} */}
+                                      
+                                    )}
                               </blockquote>
                             </div>
                             <div class="d-flex justify-content-between align-recipes-center mt-4 border-top pt-2">
