@@ -105,3 +105,125 @@ a {
     color-scheme: dark;
   }
 }
+
+.recipeContainer {
+  color: black;
+  margin-bottom: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.recipeContainer .recipeImage {
+  width: 50%;
+  height: 100%;
+
+}
+
+.recipeContainer .recipeImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipeContainer .recipeDetails {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.recipeContainer .recipeTitle {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.recipeContainer .recipeIngredients {
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.recipeContainer .recipeInstructions {
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.recipeContainer .recipeRating {
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+blockquote{
+  background-color: rgb(224, 220, 220);
+  padding: 20px;
+  font-style:italic;
+  border-radius: 5px;
+}
+.form-signin{
+  background-color: white;
+  color: black;
+}
+.navbar{
+  background-color: #630c42;
+  color: #b28fa7;
+}
+.navbar .navbar-brand{
+  color: #b28fa7;
+}
+.btn.btn-primary{
+  background-color: #733f5f;
+  color: #b28fa7;
+  border:none;
+}
+.btn.btn-secondary{
+  background-color:#edb654;
+  color: #fff;
+  border:none;
+  transition: all ease-in .3s;
+}
+.btn.btn.btn-secondary:hover{
+  background-color:#d29a39;
+  
+} 
+.navbar .navbar-link{
+  padding: 5px 8px;
+  text-transform: capitalize;
+  transition: all ease-in .3s;
+}
+.navbar .navbar-link:hover{
+  color:white
+}
+.banner{
+  background: url('/images/banner01.jpg');
+  background-size: cover;
+}
+.banner .search {
+  width: 50%;
+  margin: auto;
+}
+
+footer.navbar {
+  background-color: #932468;
+  color: #fff;
+}
+
+footer.navbar .navbar-brand{
+  color: #fff;
+}
+.card-text .card-title{
+  color:#630c42;
+  transition: ease-in .3s;
+}
+.card-text .card-title:hover{
+  color:#932468;
+}
+.card-ingredients{
+  color:#932468;
+  font-style: italic;
+}
+blockquote .card-ingredients{
+  display: inline-block;
+}

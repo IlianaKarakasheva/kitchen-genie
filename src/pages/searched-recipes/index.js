@@ -22,9 +22,7 @@ export default function Recipe() {
     <div className='recipeContainer'>
       <div className='row'>
         <div className='recipeImage col-6'>
-          <blockquote>
           <img src={`/images/${recipe?.image ? recipe?.image : "nophoto.png"}`} alt={recipe?.title} />
-          </blockquote>
         </div>
         <div className='col-6'>
 

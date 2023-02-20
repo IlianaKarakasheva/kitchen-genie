@@ -6,76 +6,81 @@ import Data from '../../public/data.json'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-//  console.log(Data.recipes)
-        
-const recipes = Data.recipes;
+  //  console.log(Data.recipes)
+
+  const recipes = Data.recipes;
 
   return (
     <>
-    <main>
-    <main>
+      <main>
+        <main>
 
-<section class="py-5 text-center container">
-  <div class="row py-lg-5">
-    <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 class="fw-light">Гладни ли сте?</h1>
-      <p class="lead text-muted">Вижте какво имате в хладилника и разберете какво можете да сготвите</p>        
-        {/* <a href="#" class="btn btn-primary my-2">Търсене</a> */}
-          <input type="text" placeholder="Tъpceнe" name="search" class="fa fa-search"/>
-
-    </div>
-  </div>
-</section>
-
-<div class="album py-5 bg-light">
-  <div class="container">
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      
-
-        {
-          recipes.map((recipe) => {
-            return (
-              <div class="col">
-                <div class="card shadow-sm">
-                {/* <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><text x="50%" y="50%" fill="#eceeef" dy=".3em"><img src="public\images\recipe1.jpg" /></text></svg> */}
-              
-          <img src={`/images/${recipe.image ? recipe.image:"nophoto.jpg" }`} alt={recipe?.title}/>
-
-                <div class="card-body text-black">
-                  
-                  <p class="card-text ">{recipe.title}</p>
-                    PRODUCTS NEEDED:
-                    <br></br>
-                    {
-                      recipe.ingredients.map((ingredient) => {
-                        return (
-                          // <l class="btn btn-outline-secondary margin-2">{ingredient}</l>
-                          <l>, {ingredient}</l>
-                        )
-                      })
-                    }
-                    <br></br>
-                  <div class="d-flex justify-content-between align-recipes-center">
-                    <div class="btn-group">
-                      <br></br>
-                      <a href ={"/recipes/"+ recipe.id} class="btn btn-sm btn-outline-secondary">View</a>
-                    </div>
-                    <small class="text-muted">{recipe.time}min</small>
-                  </div>
+          <section class="py-5 text-center banner">
+            <div class="row py-lg-5">
+              <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-bold">Гладни ли сте?</h1>
+                <p class="lead">Вижте какво имате в хладилника и разберете какво можете да сготвите</p>
+                {/* <a href="#" class="btn btn-primary my-2">Търсене</a> */}
+                <div class="input-group mb-3 search">
+                  <input type="text" class="form-control" placeholder="Search products" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                  <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"> Search</i></button>
                 </div>
-              </div> 
-            </div>             
-            )   
-          })
-        }
-    </div>
-  </div>
-</div>
+              </div>
+            </div>
+          </section>
 
-</main>
-    </main>
-    
+          <div class="album py-5 bg-light">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {
+                  recipes.map((recipe) => {
+                    return (
+                      <div class="col">
+                        <div class="card shadow-sm">
+                          {/* <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><text x="50%" y="50%" fill="#eceeef" dy=".3em"><img src="public\images\recipe1.jpg" /></text></svg> */}
+
+                          {/* <a href={"/recipes/" + recipe.id}> <img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} /></a> */}
+                          <img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} />
+                          <div class="card-body text-black">
+
+                            <div class="card-text">
+                              <div className='card-title'>
+                               <a href={"/recipes/" + recipe.id}>
+                              <strong>{recipe.title}</strong>
+                              </a> 
+                              </div>
+                            </div>
+                              <div className='card-ingredients'>
+                            PRODUCTS NEEDED:
+                            <br></br>
+                            <blockquote className='card-ingredients'>
+
+                            {
+                              recipe.ingredients.map((ingredient, index) => {
+                                return (
+                                  (index > 0) ? `, ${ingredient}` : ingredient
+                                  )
+                                })
+                              }
+                              </blockquote>
+                              </div>
+
+                            <div class="d-flex justify-content-between align-recipes-center mt-4 border-top pt-2">
+                              <a href={"/recipes/" + recipe.id} class="btn btn-sm btn-secondary">View</a>
+                              <small class="text-muted"><i class="bi bi-hourglass-split"></i>{recipe.time}min</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </main>
+      </main>
+
       {/* <Head>
         <title>Create Next App</title>
         <meta name="description" content="Generated by create next app" />
