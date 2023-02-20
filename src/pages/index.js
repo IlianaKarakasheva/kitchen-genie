@@ -36,18 +36,13 @@ export default function Home() {
                     return (
                       <div class="col">
                         <div class="card shadow-sm">
-                          {/* <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><text x="50%" y="50%" fill="#eceeef" dy=".3em"><img src="public\images\recipe1.jpg" /></text></svg> */}
-
-                          {/* <a href={"/recipes/" + recipe.id}> <img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} /></a> */}
-                          {/* <div className='card-image'> */}
-                          <img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} className="card-image"/>
-                          {/* </div> */}
+                          <a href={"/recipes/" + recipe.id}><img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} className="card-image" />
+                          </a>
                           <div class="card-body text-black">
-
                             <div class="card-text">
-                                <a href={"/recipes/" + recipe.id} className='card-title'>
-                                  <strong>{recipe.title}</strong>
-                                </a>
+                              <a href={"/recipes/" + recipe.id} className='card-title'>
+                                <strong>{recipe.title}</strong>
+                              </a>
                             </div>
                             <div className='card-ingredients'>
                               Products needed:
@@ -83,6 +78,11 @@ export default function Home() {
           </div>
         </main>
       </main>
+
+
+
+
+
 
       {/* <Head>
         <title>Create Next App</title>
