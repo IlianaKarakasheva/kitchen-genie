@@ -87,12 +87,12 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
 
 a {
@@ -113,18 +113,20 @@ a {
   border-radius: 10px;
   overflow: hidden;
   padding: 20px;
+  border: #630c42;
 }
 
 .recipeContainer .recipeImage {
   width: 50%;
   height: 100%;
-
 }
 
 .recipeContainer .recipeImage img {
-  width: 100%;
-  height: 100%;
+  width: 360px;
+  height: 240px;
   object-fit: cover;
+  border: #630c42;
+  border-radius: 20px;
 }
 
 .recipeContainer .recipeDetails {
@@ -213,6 +215,10 @@ footer.navbar {
 footer.navbar .navbar-brand{
   color: #fff;
 }
+.card-image{
+  width: 360px;
+  height: 240px;
+}
 .card-text .card-title{
   color:#630c42;
   transition: ease-in .3s;
@@ -226,4 +232,12 @@ footer.navbar .navbar-brand{
 }
 blockquote .card-ingredients{
   display: inline-block;
+  max-height: 100px;
+}
+.card{
+  max-width: 360px;
+  max-height: 480px;
+  min-height: 480px;
+  border: #630c42;
+  border-radius: 20px;
 }

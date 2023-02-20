@@ -8,16 +8,10 @@ export default function SiteFooter() {
             </a>
                 <ul class= " navbar-nav">
                     <li class="navbar-item">
-
-                        <a href="/" class="navbar-link">
-                            HOME
-                            </a>
-                        <a href="/about" class="navbar-link">
-                           ABOUT
-                        </a>
-                        <a href="/contacts" class="navbar-link">
-                           CONTACTS
-                        </a>
+                        <a href="/" class="navbar-link">HOME</a>
+                        <a href="/about" class="navbar-link">ABOUT</a>
+                        <a href="/contacts" class="navbar-link">CONTACTS</a>
+                        <a href="#" className="text-muted">Back to top</a>
                     </li>
                 
                 </ul>

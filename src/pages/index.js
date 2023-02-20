@@ -20,7 +20,6 @@ export default function Home() {
               <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-bold">Гладни ли сте?</h1>
                 <p class="lead">Вижте какво имате в хладилника и разберете какво можете да сготвите</p>
-                {/* <a href="#" class="btn btn-primary my-2">Търсене</a> */}
                 <div class="input-group mb-3 search">
                   <input type="text" class="form-control" placeholder="Search products" aria-label="Recipient's username" aria-describedby="button-addon2" />
                   <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"> Search</i></button>
@@ -40,31 +39,35 @@ export default function Home() {
                           {/* <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><text x="50%" y="50%" fill="#eceeef" dy=".3em"><img src="public\images\recipe1.jpg" /></text></svg> */}
 
                           {/* <a href={"/recipes/" + recipe.id}> <img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} /></a> */}
-                          <img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} />
+                          {/* <div className='card-image'> */}
+                          <img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} className="card-image"/>
+                          {/* </div> */}
                           <div class="card-body text-black">
 
                             <div class="card-text">
-                              <div className='card-title'>
-                               <a href={"/recipes/" + recipe.id}>
-                              <strong>{recipe.title}</strong>
-                              </a> 
-                              </div>
+                                <a href={"/recipes/" + recipe.id} className='card-title'>
+                                  <strong>{recipe.title}</strong>
+                                </a>
                             </div>
-                              <div className='card-ingredients'>
-                            PRODUCTS NEEDED:
-                            <br></br>
-                            <blockquote className='card-ingredients'>
-
-                            {
-                              recipe.ingredients.map((ingredient, index) => {
-                                return (
-                                  (index > 0) ? `, ${ingredient}` : ingredient
-                                  )
-                                })
-                              }
+                            <div className='card-ingredients'>
+                              Products needed:
+                              <br></br>
+                              <blockquote className='card-ingredients'>
+                                {
+                                  recipe.ingredients.map((ingredient, index) => {
+                                    return (
+                                      (index > 0) ? `, ${ingredient}` : ingredient
+                                    )
+                                  })
+                                }
+                                {/* {recipe?.ingredients.slice(0, 5).map((ingredient, index) => (
+                                  <div key={index}>{ingredient}</div>
+                                 ))}
+                                    {recipe?.ingredients.length > 5 && (
+                                      <div>etc.</div>
+                                    )} */}
                               </blockquote>
-                              </div>
-
+                            </div>
                             <div class="d-flex justify-content-between align-recipes-center mt-4 border-top pt-2">
                               <a href={"/recipes/" + recipe.id} class="btn btn-sm btn-secondary">View</a>
                               <small class="text-muted"><i class="bi bi-hourglass-split"></i>{recipe.time}min</small>

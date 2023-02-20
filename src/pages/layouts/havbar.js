@@ -12,19 +12,13 @@ export default function Navbar() {
                     <li class="navbar-item">
                         {/* <a href="/my-profile" class="navbar-link">
                             <button class="btn btn-sm ">My profile</button>
-                        </a>
-                        <a href="/saved-recipes" class="navbar-link">
+                            </a>
+                            <a href="/saved-recipes" class="navbar-link">
                             <button class="btn btn-sm ">Saved Recipes</button>
                         </a> */}
-                        <a href="/" class="navbar-link">
-                            HOME
-                            </a>
-                        <a href="/about" class="navbar-link">
-                           ABOUT
-                        </a>
-                        <a href="/contacts" class="navbar-link">
-                           CONTACTS
-                        </a>
+                        <a href="/" class="navbar-link">HOME</a>
+                        <a href="/about" class="navbar-link">ABOUT</a>
+                        <a href="/contacts" class="navbar-link">CONTACTS</a>
                     </li>
                 
                 </ul>
