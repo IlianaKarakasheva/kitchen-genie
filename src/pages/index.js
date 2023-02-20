@@ -56,11 +56,9 @@ export default function Home() {
                                     )
                                   })
                                 }
-                                
-                                    {recipe?.ingredients.length > 5 && (
-                                      <div>etc.</div>
-                                      
-                                    )}
+                                {recipe?.ingredients.length > 5 && (
+                                  <div>etc.</div>
+                                )}
                               </blockquote>
                             </div>
                             <div class="d-flex justify-content-between align-recipes-center mt-4 border-top pt-2">
