@@ -234,10 +234,15 @@ footer.navbar .navbar-brand {
   font-style: italic;
 }
 
-blockquote .card-ingredients {
-  display: inline-block;
-  max-height: 100px;
-  min-height: 100px;
+blockquote.card-ingredients {
+  height: 75px;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: no
 }
 
 .card {

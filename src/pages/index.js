@@ -19,7 +19,7 @@ export default function Home() {
             <div class="row py-lg-5">
               <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-bold">Гладни ли сте?</h1>
-                <p class="lead">Вижте какво имате в хладилника и разберете какво можете да сготвите</p>
+                <p class="lead">Вижте какво имате в хладилника и разберете какво може да си сготвите</p>
                 <div class="input-group mb-3 search">
                   <input type="text" class="form-control" placeholder="Search products" aria-label="Recipient's username" aria-describedby="button-addon2" />
                   <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"> Search</i></button>
@@ -46,7 +46,7 @@ export default function Home() {
                             </div>
                             <div className='card-ingredients'>
                               Products needed:
-                              <br></br>
+                              
                               <blockquote className='card-ingredients'>
                                 {
 
@@ -57,7 +57,7 @@ export default function Home() {
                                   })
                                 }
                                 {recipe?.ingredients.length > 5 && (
-                                  <div>etc.</div>
+                                  " etc."
                                 )}
                               </blockquote>
                             </div>

@@ -24,13 +24,11 @@ export default function Navbar() {
                 </ul>
                 <ul class= " navbar-nav">
                     <li class="navbar-item">
-                        
-                        
                         <a href="/signin" class="btn btn-sm btn-secondary me-2">
-                            Login
+                            <b>Login</b>  
                         </a>
                         <a href="/signup" class="btn btn-sm btn-secondary">
-                            Register
+                            <b>Register</b>
                         </a>
                     </li>
                 </ul>
