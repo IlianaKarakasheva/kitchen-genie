@@ -255,3 +255,9 @@ blockquote.card-ingredients {
 .newRecipe{
   color: #630c42;
 }
+.addRecipe{
+  /* background-color: #ff1fa92a;
+  border-radius: 20px; */
+  height: 500px;
+  margin-bottom: 20px;
+}

@@ -7,21 +7,21 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function NewRecipe() {
     return (
-        <div className='container'>
-            <div className='newRecipe row align-items-center justify-content-center mt-5'>
+        <div className='addRecipe container '>
+            <div className='newRecipe row align-items-center justify-content-center mt-4'>
                 {/* <h4>post a new recipe</h4> */}
-
-                <div className='image col-6 d-flex'>
+<form className='col-12 d-flex flex-row'>
+                <div className='image col-6 flex-column d-flex justify-content-center'>
                     Pick a photo of your dish:
                     <input type="file" />
                 </div>
-                <form className='col-6'>
+                <div className='col-6'>
 
                     <div className='title'>
                         <strong>
                             Label your dish:
                         </strong>
-                        <input type="text" className='form-control' placeholder='Dish Title' />
+                        <input type="text" className='form-control' placeholder='Dish Title' required />
                     </div>
                     <div className='content'>
                         <div className='time'>
@@ -40,12 +40,12 @@ export default function NewRecipe() {
                             <strong>
                                 Instructions:
                             </strong>
-                            <input type="text" className='form-control' placeholder='Instructions' />
+                            <textarea rows="9" type="text" className='form-control' placeholder='Instructions' />
                         </div>
                     </div>
                     <button type="submit" class="btn btn-sm btn-secondary me-2 mt-4 mb-3">Cancel</button>
                     <button type="submit" class="btn btn-sm btn-secondary me-2 mt-4 mb-3">Submit Recipe</button>
-
+</div>
                 </form>
             </div>
         </div>
