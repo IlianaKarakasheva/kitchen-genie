@@ -21,13 +21,12 @@ export default function NewRecipe() {
                 {/* <h4>post a new recipe</h4> */}
                 <form className='col-12 d-flex flex-row'>
                     <div className='image col-6 flex-column d-flex justify-content-center'>
-                        
+
                         {!image && "Pick a photo of your dish:"}
-                       {
-                           image &&
-                           <img src={image} alt="preview image" />
-                    }
-                    <input type="file" onChange={onImageChange} required />
+                        {
+                            image && <img src={image} alt="preview image" className='selectedPhoto'/>
+                        }
+                        <input type="file" onChange={onImageChange} required />
 
                     </div>
                     <div className='col-6'>
