@@ -19,7 +19,7 @@ export default function Recipe() {
   // const recipe = Data.recipes;
   console.log(recipe)
   return (
-    <div className='recipeContainer'>
+    <div className='recipeContainer container'>
       <div className='row'>
         <div className='recipeImage col-6'>
           <blockquote>
