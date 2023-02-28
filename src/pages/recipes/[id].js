@@ -4,7 +4,6 @@ import { Inter } from '@next/font/google'
 import { useParams } from 'react-router-dom'
 import { useRouter } from 'next/router'
 import Data from '../../../public/data.json'
-import { firestore } from '../firebase/clientApp';
 
 
 const inter = Inter({ subsets: ['latin'] })
