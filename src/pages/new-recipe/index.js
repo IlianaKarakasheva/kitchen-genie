@@ -8,11 +8,15 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function NewRecipe() {
     const [image, setImage] = useState(null)
-
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             setImage(URL.createObjectURL(event.target.files[0]));
         }
+    }
+    const onDeleteImage = (event) => {
+        console.log(event.target.files);
+        event.target.previousElementSibling.value = null;
+        setImage(null)
     }
 
     return (
@@ -26,8 +30,9 @@ export default function NewRecipe() {
                         {
                             image && <img src={image} alt="preview image" className='selectedPhoto'/>
                         }
-                        <input type="file" onChange={onImageChange} required />
-
+                        <input type="file" onChange={onImageChange} required placeholder='' />
+                     
+{image &&   <button type="submit" onClick={onDeleteImage} class="btn btn-sm btn-secondary col-2 me-2 mt-4 mb-3">Delete</button>  }
                     </div>
                     <div className='col-6'>
 
@@ -57,7 +62,7 @@ export default function NewRecipe() {
                                 <textarea rows="9" type="text" className='form-control' placeholder='Instructions' required />
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-secondary me-2 mt-4 mb-3">Cancel</button>
+                        <button type="submit" class="btn btn-sm btn-primary me-2 mt-4 mb-3">Cancel</button>
                         <button type="submit" class="btn btn-sm btn-secondary me-2 mt-4 mb-3">Submit Recipe</button>
                     </div>
                 </form>
