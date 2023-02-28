@@ -254,14 +254,21 @@ blockquote.card-ingredients {
 }
 .newRecipe{
   color: #630c42;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 .addRecipe{
   /* background-color: #ff1fa92a;
   border-radius: 20px; */
   height: 501px;
   margin-bottom: 20px;
+  
 }
 .addRecipe .selectedPhoto{
   margin-right: 15px;
   margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 
 }
