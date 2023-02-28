@@ -262,7 +262,7 @@ blockquote.card-ingredients {
 .addRecipe{
   /* background-color: #ff1fa92a;
   border-radius: 20px; */
-  height: 501px;
+  /* height: 501px; */
   margin-bottom: 20px;
   
 }
@@ -270,5 +270,34 @@ blockquote.card-ingredients {
   margin-right: 15px;
   margin-bottom: 15px;
   border-radius: 5px;
-  box-shadow: 0 
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.addRecipe input[type="file"],
+.addRecipe input[type="text"],
+.addRecipe textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+.addRecipe button {
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+.addRecipe button[type="submit"] {
+  background-color: #630c42;
+  color: white;
+}
+.addRecipe button[type="submit"]:hover {
+  background-color: #ff1fa9;
 }

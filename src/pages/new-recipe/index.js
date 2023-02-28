@@ -14,7 +14,6 @@ export default function NewRecipe() {
         }
     }
     const onDeleteImage = (event) => {
-        console.log(event.target.files);
         event.target.previousElementSibling.value = null;
         setImage(null)
     }
