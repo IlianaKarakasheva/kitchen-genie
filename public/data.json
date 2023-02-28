@@ -5,7 +5,7 @@
             "title": "Spaghetti Bolognese",
             "instructions":"Cook spaghetti according to package instructions until al dente, drain and set aside. In a large, heat olive oil over medium heat. Add ground beef and cook until browned, breaking up any large clumps with a wooden spoon or spatula. Add onion and garlic to the skillet and cook until softened, about 3-4 minutes. Add diced tomatoes, tomato paste, oregano, basil, salt, and black pepper to the skillet. Stir to combine. Simmer the sauce for 10-15 minutes, stirring occasionally, until it has thickened slightly. Serve the spaghetti with the sauce on top, and sprinkle with Parmesan cheese. ",
             "ingredients": [
-                "cheese", "tomatoes", "onions", "garlic", "beef", "tomatoes", "spaghetti", "cheese", "tomatoes", "onions", "garlic", "beef", "tomatoes", "spaghetti", ""
+                "cheese", "tomatoes", "onions", "garlic", "beef", "spaghetti"
             ],
             "time": 15,
             "rating": 3,
