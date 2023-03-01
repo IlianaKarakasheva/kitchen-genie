@@ -35,26 +35,25 @@ export default function Recipe() {
               <h6>Ingredients:</h6>
               <p>
                 {recipe?.ingredients.map((ingredient, index) => {
-                  return (
-                    (index > 0) ? `, ${ingredient}` : ingredient
-                  )
-
+                  return ((index > 0) ? `, ${ingredient}` : ingredient)
                 })}
               </p>
             </div>
             <div className='col-6'>
-
               <h6>Time needed:</h6>
               <p>{recipe?.time}min</p>
             </div>
+
             <div className='col-6'>
               <h6>Rating:</h6>
               <p>{recipe?.rating}/5</p>
             </div>
+            
             <div className='col-12'>
               <h6>Instructions:</h6>
               <p>{recipe?.instructions}</p>
             </div>
+            
           </div>
         </div>
       </div>
