@@ -318,3 +318,7 @@ blockquote.card-ingredients {
 .addRecipe button[type="submit"]:hover {
   background-color: #ff1fa9;
 }
+
+.dbDisplay{
+  color:#630c42
+}

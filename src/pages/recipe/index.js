@@ -27,11 +27,24 @@ export default function Recipe() {
     const q = query(recipeRef);
     const querySnapshot = await getDocs(q);
     const result = [];
+    // const updatedddata{      
+      // const title = doc.data().title;
+      // const time = doc.data().time; 
+    // }
+
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots  
       // console.log(doc.id, " => ", doc.data());
-      result.push(doc.data())
-      
+    
+      const updateddata = doc.data().title;
+      const data = {
+        title: doc.data().title,
+        time:doc.data().time,
+        ingredients: doc.data().ingredients
+      }
+      result.push(data)
+    
+      // result.push(doc.data())
     });
     setRecipes(result)
     // map through todos adding them to an array
@@ -54,11 +67,20 @@ export default function Recipe() {
   }, []);
   console.log("recipes", recipes)
   return (
-    <h1>recipe</h1>
-    // recipes.map((recipe) => (
-    //   <div key={recipe.id}>
-    //     {recipe.title}
-    //   </div>
-    // ))
+    <div className='dbDisplay'>
+    <ul>
+  {recipes.map((recipe, index) => (
+    <li key={index}>
+      <h3>
+      title: {recipe.title}</h3>
+      Time: {recipe.time}
+      <li>
+      ingredients: {recipe.ingredients}
+      
+      </li>
+    </li>
+  ))}
+</ul>
+    </div>
   );
 }
