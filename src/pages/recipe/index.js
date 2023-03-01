@@ -20,18 +20,21 @@ export default function Recipe() {
     // const recipesQuery = query(recipesCollection);
     // // get the todos
     // const querySnapshot = await getDocs(recipesQuery);
-    console.log(recipesCollection)
-    const recipeRef = collection(firestore, "recipes")
-    console.log(recipeRef)
-    
-    const q = query(recipeRef); 
+    console.log("recipesCollection", recipesCollection)
+    const recipeRef = await collection(firestore, "recipes")
+    console.log("recipeRef", recipeRef)
+
+    const q = query(recipeRef);
     const querySnapshot = await getDocs(q);
+    const result = [];
     querySnapshot.forEach((doc) => {
-         // doc.data() is never undefined for query doc snapshots  
-          console.log(doc.id, " => ", doc.data());
-         });
+      // doc.data() is never undefined for query doc snapshots  
+      // console.log(doc.id, " => ", doc.data());
+      result.push(doc.data())
+      
+    });
+    setRecipes(result)
     // map through todos adding them to an array
-    // const result = [];
     // querySnapshot.forEach((snapshot) => {
     //   result.push(snapshot);
     // });
@@ -39,16 +42,23 @@ export default function Recipe() {
     // setRecipes(result);
   };
   useEffect(() => {
+    getRecipes()
     // get the todos
-    getRecipes();
+    // const data = getRecipes();
+    // console.log("data",data)
+    // setRecipes(data)
     // reset loading
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000)
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 2000)
   }, []);
-  console.log(recipes)
+  console.log("recipes", recipes)
   return (
-
     <h1>recipe</h1>
-  )
+    // recipes.map((recipe) => (
+    //   <div key={recipe.id}>
+    //     {recipe.title}
+    //   </div>
+    // ))
+  );
 }

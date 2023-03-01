@@ -24,14 +24,11 @@ export default function Recipe() {
       <div className='row'>
         <div className='recipeImage col-6'>
           <blockquote>
-          <img src={`/images/${recipe?.image ? recipe?.image : "nophoto.png"}`} alt={recipe?.title} />
+            <img src={`/images/${recipe?.image ? recipe?.image : "nophoto.png"}`} alt={recipe?.title} />
           </blockquote>
         </div>
         <div className='col-6'>
-
-
-          <h2 className='recipeTitle'>
-            {recipe?.title}</h2>
+          <h2 className='recipeTitle'>{recipe?.title}</h2>
           <div className='recipeDetails row'>
             <div className='col-12'>
 
@@ -63,7 +60,7 @@ export default function Recipe() {
       </div>
       <div className='row'>
         <div className='col'>
-          <hr/>
+          <hr />
         </div>
       </div>
       <div className='row'>
@@ -71,7 +68,7 @@ export default function Recipe() {
         {recipe?.comments.map((comment) => (
           <div className='col' key={comment.comment_id}>
             <blockquote>
-            {comment.description}
+              {comment.description}
             </blockquote>
           </div>
         ))}
