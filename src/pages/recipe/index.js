@@ -28,22 +28,22 @@ export default function Recipe() {
     const querySnapshot = await getDocs(q);
     const result = [];
     // const updatedddata{      
-      // const title = doc.data().title;
-      // const time = doc.data().time; 
+    // const title = doc.data().title;
+    // const time = doc.data().time; 
     // }
 
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots  
       // console.log(doc.id, " => ", doc.data());
-    
+
       const updateddata = doc.data().title;
       const data = {
         title: doc.data().title,
-        time:doc.data().time,
+        time: doc.data().time,
         ingredients: doc.data().ingredients
       }
       result.push(data)
-    
+
       // result.push(doc.data())
     });
     setRecipes(result)
@@ -68,19 +68,17 @@ export default function Recipe() {
   console.log("recipes", recipes)
   return (
     <div className='dbDisplay'>
-    <ul>
-  {recipes.map((recipe, index) => (
-    <li key={index}>
-      <h3>
-      title: {recipe.title}</h3>
-      Time: {recipe.time}
-      <li>
-      ingredients: {recipe.ingredients}
-      
+  <ul>
+    {recipes.map((recipe, index) => (
+      <li key={index}>
+        <h3>
+          title: {recipe.title}
+        </h3>
+        <p>Time: {recipe.time}</p>
+        <p>Ingredients: {recipe.ingredients.join(', ')}</p>
       </li>
-    </li>
-  ))}
-</ul>
-    </div>
+    ))}
+  </ul>
+</div>
   );
 }
