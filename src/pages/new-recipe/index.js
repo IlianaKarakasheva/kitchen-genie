@@ -8,10 +8,12 @@ import Select from 'react-select'
 import { firestore } from '../../../firebase/clientApp';
 import { collection, addDoc} from "@firebase/firestore";
 import { async } from '@firebase/util'
+import { useRouter } from 'next/router'
 
  
 const inter = Inter({ subsets: ['latin'] })
 export default function NewRecipe() {
+    const router = useRouter()
     const [image, setImage] = useState(null)
     const [formData, setFormData] = useState({ image: null, title:"", time: 0, ingredients:[], instructions:""})
     const onImageChange = (event) => {
@@ -34,10 +36,20 @@ export default function NewRecipe() {
     }
 
     const onFormSubmit = async (event) =>{
-        const newRecipe = {title: formData.title, time: Number(formData.time), ingredients: formData.ingredients, instructions: formData.instructions}
-        const collectionRef= collection(firestore, "recipes")
-        const newRecipeRef = await addDoc(collectionRef, {...newRecipe})
-    } 
+        try {
+            const newRecipe = {title: formData.title, time: Number(formData.time), ingredients: formData.ingredients, instructions: formData.instructions}
+            const collectionRef= collection(firestore, "recipes")
+            const newRecipeRef = await addDoc(collectionRef, newRecipe)
+            
+                    setFormData({image: null, title:"", time: 0, ingredients:[], instructions:""})
+                    router.push("/recipes")
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+
+    }   
     
     const options = ingredients.map(ingredient => {
         return {value: ingredient, label:ingredient}
