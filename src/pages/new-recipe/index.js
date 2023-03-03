@@ -46,7 +46,6 @@ export default function NewRecipe() {
             
         } catch (error) {
             console.log(error)
-            
         }
 
     }   
