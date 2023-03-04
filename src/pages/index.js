@@ -47,10 +47,7 @@ export default function Home() {
   console.log("recipes", recipes)
 
   return (
-    
-      <main>
         <main>
-
           <section class="py-5 text-center banner">
             <div class="row py-lg-5">
               <div class="col-lg-6 col-md-8 mx-auto">
@@ -111,6 +108,5 @@ export default function Home() {
             </div>
           </div>
         </main>
-      </main>
   )
 }
