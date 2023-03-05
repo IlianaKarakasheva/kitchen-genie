@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css'
 import { firestore } from '../../firebase/clientApp';
 import { collection, QueryDocumentSnapshot, DocumentData, query, where, limit, getDocs } from "@firebase/firestore";
 import { useState, useEffect } from 'react';
+import Select from 'react-select'
 
 const recipesCollection = collection(firestore, 'recipes');
 const inter = Inter({ subsets: ['latin'] })
@@ -16,10 +17,7 @@ export default function Home() {
 
 
   const getRecipes = async () => {
-    // console.log("recipesCollection", recipesCollection)
     const recipeRef = await collection(firestore, "recipes")
-    // console.log("recipeRef", recipeRef)
-
     const q = query(recipeRef);
     const querySnapshot = await getDocs(q);
     const result = [];
@@ -46,9 +44,13 @@ export default function Home() {
   }, []
   );
   
-  //1. Detect when user is typing
-  //2. get value of what the user has typed in
-  //3. get this value everytime the input changes
+  function changePlaceholder() {const recipeSearch = document.getElementById("recipe-search");
+    if (recipeSearch.placeholder === "Search recipe by name") {
+      recipeSearch.placeholder = "Search by products";
+    } else {
+      recipeSearch.placeholder = "Search recipe by name";
+    }
+  }
 
   const handleSearchChange = (event) => {
     const newSearchValue = event.target.value
@@ -60,12 +62,11 @@ export default function Home() {
       const filtered = recipes.filter((recipe) =>
         recipe.title.toLowerCase().includes(newSearchValue.toLowerCase())
       );
+
       setFilteredRecipes(filtered);
     }
-  
     console.log("user is typing:", newSearchValue);
   }
-  // console.log("recipes", recipes)
 
   return (
         <main>
@@ -75,9 +76,10 @@ export default function Home() {
                 <h1 class="fw-bold">Гладни ли сте?</h1>
                 <p class="lead">Вижте какво имате в хладилника и разберете какво може да си сготвите</p>
                 <div class="input-group mb-3 search">
-                  <input type="text" class="form-control" placeholder="Search recipe by name" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleSearchChange} />
-                  {/* <button class="btn btn-secondary" type="button" id="button-addon2"><i  class="bi bi-search"> Search</i></button> */}
-                </div>
+                  <button class="btn btn-secondary" type="button" id="button-addon2" onClick={changePlaceholder}><i class="bi bi-arrow-down-up"></i></button>
+                  {/* <button class="btn btn-secondary" type="button" id="button-addon2" onclick="changePlaceholder()"><i class="bi bi-arrow-down-up"></i></button> */}
+                  <input id="recipe-search" type="text" class="form-control" placeholder="Search recipe by name" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleSearchChange} />
+                 </div>
               </div>
             </div>
           </section>

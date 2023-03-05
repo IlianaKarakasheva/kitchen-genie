@@ -47,21 +47,22 @@ export default function NewRecipe() {
         } catch (error) {
             console.log(error)
         }
-
     }   
     
     const options = ingredients.map(ingredient => {
         return {value: ingredient, label:ingredient}
     })
+
     const onSelect= (option)=> {
         const data =  option.map( option => option.value)
         // console.log(data, option)
         setFormData({...formData, ingredients:[...data] })
     }
+
     return (
         <div className='addRecipe container '>
             <div className='newRecipe row align-items-center justify-content-center mt-4'>
-                {/* <h4>post a new recipe</h4> */}
+                <h4>Create a new recipe!</h4>
                 <form className='col-12 d-flex flex-row'>
                     <div className='image col-6 flex-column d-flex justify-content-center'>
  
@@ -70,8 +71,8 @@ export default function NewRecipe() {
                             image && <img src={image} alt="preview image" className='selectedPhoto'/>
                         }
                         <input type="file" onChange={onImageChange} required placeholder='' />
-                     
-{image &&   <button type="submit" onClick={onDeleteImage} class="btn btn-sm btn-secondary col-2 me-2 mt-4 mb-3">Delete</button>  }
+                        {image && <button type="submit" onClick={onDeleteImage} class="btn btn-sm btn-secondary col-2 me-2 mt-4 mb-3">Delete</button>  }
+                        
                     </div>
                     <div className='col-6'>
 
