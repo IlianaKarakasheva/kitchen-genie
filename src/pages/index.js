@@ -53,18 +53,18 @@ export default function Home() {
   const handleSearchChange = (event) => {
     const newSearchValue = event.target.value
     setSearchInput(newSearchValue)
+    
+    if (newSearchValue === "") {
+      setFilteredRecipes(recipes)
+    } else {
+      const filtered = recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(newSearchValue.toLowerCase())
+      );
+      setFilteredRecipes(filtered);
+    }
+  
     console.log("user is typing:", newSearchValue);
   }
-
-  const handleSearchClick = () => {
-    const filtered = recipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(searchInput.toLowerCase())
-    );
-
-    setFilteredRecipes(filtered);
-};
-
-
   // console.log("recipes", recipes)
 
   return (
@@ -76,7 +76,7 @@ export default function Home() {
                 <p class="lead">Вижте какво имате в хладилника и разберете какво може да си сготвите</p>
                 <div class="input-group mb-3 search">
                   <input type="text" class="form-control" placeholder="Search products" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleSearchChange} />
-                  <button class="btn btn-secondary" type="button" id="button-addon2"><i onClick={handleSearchClick} class="bi bi-search"> Search</i></button>
+                  {/* <button class="btn btn-secondary" type="button" id="button-addon2"><i  class="bi bi-search"> Search</i></button> */}
                 </div>
               </div>
             </div>
