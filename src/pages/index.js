@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-// import Data from '../../../public/data.json'
 import { firestore } from '../../firebase/clientApp';
 import { collection, QueryDocumentSnapshot, DocumentData, query, where, limit, getDocs } from "@firebase/firestore";
 import { useState, useEffect } from 'react';
@@ -11,14 +10,15 @@ const recipesCollection = collection(firestore, 'recipes');
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  //  console.log(Data.recipes)
   const [recipes, setRecipes] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+
 
   const getRecipes = async () => {
-    console.log("recipesCollection", recipesCollection)
+    // console.log("recipesCollection", recipesCollection)
     const recipeRef = await collection(firestore, "recipes")
-    console.log("recipeRef", recipeRef)
+    // console.log("recipeRef", recipeRef)
 
     const q = query(recipeRef);
     const querySnapshot = await getDocs(q);
@@ -37,6 +37,7 @@ export default function Home() {
     });
 
     setRecipes(result)
+    setFilteredRecipes(result)
 
   };
 
@@ -55,6 +56,15 @@ export default function Home() {
     console.log("user is typing:", newSearchValue);
   }
 
+  const handleSearchClick = () => {
+    const filtered = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(searchInput.toLowerCase())
+    );
+
+    setFilteredRecipes(filtered);
+};
+
+
   // console.log("recipes", recipes)
 
   return (
@@ -66,7 +76,7 @@ export default function Home() {
                 <p class="lead">Вижте какво имате в хладилника и разберете какво може да си сготвите</p>
                 <div class="input-group mb-3 search">
                   <input type="text" class="form-control" placeholder="Search products" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleSearchChange} />
-                  <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"> Search</i></button>
+                  <button class="btn btn-secondary" type="button" id="button-addon2"><i onClick={handleSearchClick} class="bi bi-search"> Search</i></button>
                 </div>
               </div>
             </div>
@@ -76,7 +86,7 @@ export default function Home() {
             <div class="container">
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {
-                  recipes.map((recipe) => {
+                  filteredRecipes.map((recipe) => {
                     return (
                       <div class="col">
                         <div class="card shadow-sm">
