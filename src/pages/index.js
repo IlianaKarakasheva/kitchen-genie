@@ -75,7 +75,7 @@ export default function Home() {
                 <h1 class="fw-bold">Гладни ли сте?</h1>
                 <p class="lead">Вижте какво имате в хладилника и разберете какво може да си сготвите</p>
                 <div class="input-group mb-3 search">
-                  <input type="text" class="form-control" placeholder="Search products" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleSearchChange} />
+                  <input type="text" class="form-control" placeholder="Search recipe by name" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleSearchChange} />
                   {/* <button class="btn btn-secondary" type="button" id="button-addon2"><i  class="bi bi-search"> Search</i></button> */}
                 </div>
               </div>
