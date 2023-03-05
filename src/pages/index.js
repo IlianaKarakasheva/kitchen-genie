@@ -13,6 +13,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   //  console.log(Data.recipes)
   const [recipes, setRecipes] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
   const getRecipes = async () => {
     console.log("recipesCollection", recipesCollection)
     const recipeRef = await collection(firestore, "recipes")
@@ -41,10 +43,19 @@ export default function Home() {
   useEffect(() => {
     getRecipes()
   }, []
-
   );
+  
+  //1. Detect when user is typing
+  //2. get value of what the user has typed in
+  //3. get this value everytime the input changes
 
-  console.log("recipes", recipes)
+  const handleSearchChange = (event) => {
+    const newSearchValue = event.target.value
+    setSearchInput(newSearchValue)
+    console.log("user is typing:", newSearchValue);
+  }
+
+  // console.log("recipes", recipes)
 
   return (
         <main>
@@ -54,7 +65,7 @@ export default function Home() {
                 <h1 class="fw-bold">Гладни ли сте?</h1>
                 <p class="lead">Вижте какво имате в хладилника и разберете какво може да си сготвите</p>
                 <div class="input-group mb-3 search">
-                  <input type="text" class="form-control" placeholder="Search products" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                  <input type="text" class="form-control" placeholder="Search products" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleSearchChange} />
                   <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"> Search</i></button>
                 </div>
               </div>
