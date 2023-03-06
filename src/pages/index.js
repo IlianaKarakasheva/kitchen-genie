@@ -6,6 +6,8 @@ import { firestore } from '../../firebase/clientApp';
 import { collection, QueryDocumentSnapshot, DocumentData, query, where, limit, getDocs } from "@firebase/firestore";
 import { useState, useEffect } from 'react';
 import Select from 'react-select'
+import {ingredients} from "../../public/ingredients.json"
+
 
 const recipesCollection = collection(firestore, 'recipes');
 const inter = Inter({ subsets: ['latin'] })
@@ -27,7 +29,8 @@ export default function Home() {
         id: doc.id,
         title: doc.data().title,
         time: doc.data().time,
-        ingredients: doc.data().ingredients
+        ingredients: doc.data().ingredients,
+        image: doc.data().image
       }
 
       result.push(data)
@@ -53,7 +56,9 @@ export default function Home() {
       setFilterBy("name")
     }
   }
-
+  const options = ingredients.map(ingredient => {
+    return {value: ingredient, label:ingredient}
+})
   const handleSearchChange = (event) => {
     const newSearchValue = event.target.value
     console.log( "filterBy:",filterBy);
@@ -65,25 +70,27 @@ export default function Home() {
       const filtered = recipes.filter((recipe) =>
         recipe.title.toLowerCase().includes(newSearchValue.toLowerCase())
       );
-    
-
       setFilteredRecipes(filtered);
     }
     else {
-      const filtered = recipes.filter((recipe) =>
-        recipe.ingredients.find(
-          ingredient =>(
-              ingredient.toLowerCase() === newSearchValue.toLowerCase()
-          )
+      // const filtered = recipes.filter((recipe) =>
+      //   recipe.ingredients.find(
+      //     ingredient =>(
+      //         ingredient.toLowerCase() === newSearchValue.toLowerCase()
+      //     )
+      //   )
+        const filtered = recipes.filter((recipe) =>
+          recipe.ingredients.find(
+            ingredients =>(
+              ingredients === newSearchValue
+            ) 
         )
-      );
-    
+    );
 
       setFilteredRecipes(filtered);
     }
-    console.log("user is typing:", newSearchValue);
   }
-
+console.log(filteredRecipes);
   return (
         <main>
           <section class="py-5 text-center banner">
@@ -93,8 +100,14 @@ export default function Home() {
                 <p class="lead">Вижте какво имате в хладилника и разберете какво може да си сготвите</p>
                 <div class="input-group mb-3 search">
                   <button class="btn btn-secondary" type="button" id="button-addon2" onClick={changePlaceholder}><i class="bi bi-arrow-down-up"></i></button>
-                  {/* <button class="btn btn-secondary" type="button" id="button-addon2" onclick="changePlaceholder()"><i class="bi bi-arrow-down-up"></i></button> */}
-                  <input id="recipe-search" type="text" class="form-control" placeholder="Search recipe by name" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleSearchChange} />
+                  <input id="recipe-search" type="text" className="form-control" onChange={handleSearchChange} placeholder="Search recipe by name" aria-label="Recipient's username" aria-describedby="button-addon2" /> 
+                  {/* {filterBy === "name" ?(
+                    <input id="recipe-search" type="text" className="form-control" onChange={handleSearchChange} placeholder="Search recipe by name" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                  ):
+                  <Select options={options} isMulti className='searchSelect'
+                  // onChange={onSelect}
+                  />
+                  } */}
                  </div>
               </div>
             </div>
@@ -108,7 +121,7 @@ export default function Home() {
                     return (
                       <div class="col">
                         <div class="card shadow-sm">
-                          <a href={"/recipes/" + recipe.id}><img src={`/images/${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} className="card-image" />
+                          <a href={"/recipes/" + recipe.id}><img src={`${recipe.image ? recipe.image : "nophoto.png"}`} alt={recipe?.title} className="card-image" />
                           </a>
                           <div class="card-body text-black">
                             <div class="card-text">

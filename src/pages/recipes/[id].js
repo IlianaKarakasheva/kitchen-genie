@@ -50,7 +50,7 @@ export default function Recipe() {
         <div className="recipeImage col-6">
           <blockquote>
             <img
-              src={`/images/${recipe.image ? recipe?.image : "nophoto.png"}`}
+              src={`${recipe.image ? recipe?.image : "nophoto.png"}`}
               alt={recipe?.title}
             />
           </blockquote>

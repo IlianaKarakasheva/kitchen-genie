@@ -5,8 +5,9 @@ import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
 import {ingredients} from "../../../public/ingredients.json"
 import Select from 'react-select'
-import { firestore } from '../../../firebase/clientApp';
+import { firestore, storage } from '../../../firebase/clientApp';
 import { collection, addDoc} from "@firebase/firestore";
+import {ref, uploadBytes, getDownloadURL} from "@firebase/storage";
 import { async } from '@firebase/util'
 import { useRouter } from 'next/router'
 
@@ -17,12 +18,17 @@ export default function NewRecipe() {
     const [image, setImage] = useState(null)
     const [formData, setFormData] = useState({ image: null, title:"", time: 0, ingredients:[], instructions:""})
     const [errors, setErrors] = useState({})
+
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             setImage(URL.createObjectURL(event.target.files[0]));
+            setFormData({...formData, image: event.target.files[0]})
+            setErrors ({...errors, image: null })
         }
+
     }
-    const onDeleteImage = (event) => {
+
+    const onRemoveImage = (event) => {
         event.target.previousElementSibling.value = null;
         setImage(null)
     }
@@ -50,6 +56,9 @@ export default function NewRecipe() {
         if(formData.ingredients.length === 0) {
             errors.ingredients = "Please add ingredients"
         }
+        if( formData.image === null){
+            errors.image = "Please upload image"
+        }
         return errors
 
     }
@@ -60,18 +69,23 @@ export default function NewRecipe() {
             const errors = validateFormData(formData)
             setErrors(errors)
             if (Object.keys(errors).length === 0){
-                const newRecipe = {title: formData.title, time: Number(formData.time), ingredients: formData.ingredients, instructions: formData.instructions}
+                let imageUrl = ""
+                const imagesRef = ref(storage, `images/${formData.title}`)
+                await uploadBytes (imagesRef, formData.image).then((snapShot)=> (console.log("image uploaded")))
+                imageUrl = await getDownloadURL (imagesRef)
+                const newRecipe = {image: imageUrl,title: formData.title, time: Number(formData.time), ingredients: formData.ingredients, instructions: formData.instructions}
                 console.log(newRecipe);
-                // const collectionRef= collection(firestore, "recipes")
-                // const newRecipeRef = await addDoc(collectionRef, newRecipe)
+                const collectionRef= collection(firestore, "recipes")
+                const newRecipeRef = await addDoc(collectionRef, newRecipe)
                 
-                //         setFormData({image: null, title:"", time: 0, ingredients:[], instructions:""})
-                //         router.push("/recipes")
+                        setFormData({image: null, title:"", time: 0, ingredients:[], instructions:""})
+                        router.push("/")
             }
             
         } catch (error) {
             console.log(error)
         }
+
     }   
     
     const options = ingredients.map(ingredient => {
@@ -96,7 +110,9 @@ export default function NewRecipe() {
                             image && <img src={image} alt="preview image" className='selectedPhoto'/>
                         }
                         <input type="file" onChange={onImageChange} required placeholder='' />
-                        {image && <button type="submit" onClick={onDeleteImage} class="btn btn-sm btn-secondary col-2 me-2 mt-4 mb-3">Delete</button>  }
+                        {errors.image && <span className='error text-danger'> {errors.image}</span>}
+
+                        {image && <button type="submit" onClick={onRemoveImage} class="btn btn-sm btn-secondary col-2 me-2 mt-4 mb-3">Remove</button>  }
                         
                     </div>
                     <div className='col-6'>
