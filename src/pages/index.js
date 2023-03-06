@@ -14,7 +14,7 @@ export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState([]);
-
+  const [filterBy, setFilterBy] = useState("name")
 
   const getRecipes = async () => {
     const recipeRef = await collection(firestore, "recipes")
@@ -47,21 +47,37 @@ export default function Home() {
   function changePlaceholder() {const recipeSearch = document.getElementById("recipe-search");
     if (recipeSearch.placeholder === "Search recipe by name") {
       recipeSearch.placeholder = "Search by products";
+      setFilterBy("products")
     } else {
       recipeSearch.placeholder = "Search recipe by name";
+      setFilterBy("name")
     }
   }
 
   const handleSearchChange = (event) => {
     const newSearchValue = event.target.value
+    console.log( "filterBy:",filterBy);
     setSearchInput(newSearchValue)
     
     if (newSearchValue === "") {
       setFilteredRecipes(recipes)
-    } else {
+    } else if (filterBy === "name") {
       const filtered = recipes.filter((recipe) =>
         recipe.title.toLowerCase().includes(newSearchValue.toLowerCase())
       );
+    
+
+      setFilteredRecipes(filtered);
+    }
+    else {
+      const filtered = recipes.filter((recipe) =>
+        recipe.ingredients.find(
+          ingredient =>(
+              ingredient.toLowerCase() === newSearchValue.toLowerCase()
+          )
+        )
+      );
+    
 
       setFilteredRecipes(filtered);
     }

@@ -16,6 +16,7 @@ export default function NewRecipe() {
     const router = useRouter()
     const [image, setImage] = useState(null)
     const [formData, setFormData] = useState({ image: null, title:"", time: 0, ingredients:[], instructions:""})
+    const [errors, setErrors] = useState({})
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             setImage(URL.createObjectURL(event.target.files[0]));
@@ -32,17 +33,41 @@ export default function NewRecipe() {
         const value = event.target.value
 
         setFormData({...formData, [name]: value})
-      
+        setErrors({...errors, [name]: ""})
+    }
+    
+    const validateFormData = (formData) =>{
+        const errors = {}
+        if(formData.title.trim ()=== ""){
+            errors.title = "Please enter title"
+        }
+        if(formData.time <= 0){
+            errors.time = "Please enter time"
+        }
+        if(formData.instructions.trim() ===""){
+            errors.instructions = "Please enter instructions"
+        }
+        if(formData.ingredients.length === 0) {
+            errors.ingredients = "Please add ingredients"
+        }
+        return errors
+
     }
 
     const onFormSubmit = async (event) =>{
+
         try {
-            const newRecipe = {title: formData.title, time: Number(formData.time), ingredients: formData.ingredients, instructions: formData.instructions}
-            const collectionRef= collection(firestore, "recipes")
-            const newRecipeRef = await addDoc(collectionRef, newRecipe)
-            
-                    setFormData({image: null, title:"", time: 0, ingredients:[], instructions:""})
-                    router.push("/recipes")
+            const errors = validateFormData(formData)
+            setErrors(errors)
+            if (Object.keys(errors).length === 0){
+                const newRecipe = {title: formData.title, time: Number(formData.time), ingredients: formData.ingredients, instructions: formData.instructions}
+                console.log(newRecipe);
+                // const collectionRef= collection(firestore, "recipes")
+                // const newRecipeRef = await addDoc(collectionRef, newRecipe)
+                
+                //         setFormData({image: null, title:"", time: 0, ingredients:[], instructions:""})
+                //         router.push("/recipes")
+            }
             
         } catch (error) {
             console.log(error)
@@ -81,6 +106,7 @@ export default function NewRecipe() {
                                 Label your dish:
                             </strong>
                             <input type="text" className='form-control' placeholder='Dish Title' name='title' onChange={onInputChange}  required />
+                            {errors.title && <span className='error text-danger'> {errors.title}</span>}
                         </div>
                         <div className='content'>
                             <div className='time'>
@@ -88,12 +114,16 @@ export default function NewRecipe() {
                                     How long does it take to cook?
                                 </strong>
                                 <input type="number" className='form-control' placeholder='Time Needed' name='time' onChange={onInputChange} required />
+                                {errors.time && <span className='error text-danger'> {errors.time}</span>}
+
                             </div>
                             <div className='ingredients'>
                                 <strong>
                                     Ingredients needed:
                                 </strong>
                                 <Select options={options} isMulti onChange={onSelect}/>
+                                {errors.ingredients && <span className='error text-danger'> {errors.ingredients}</span>}
+
                                 {/* <input type="text" className='form-control' placeholder='Ingredients needed' required /> */}
                             </div>
                             <div className='instructions'>
@@ -101,6 +131,8 @@ export default function NewRecipe() {
                                     Instructions:
                                 </strong>
                                 <textarea rows="9" type="text" className='form-control' placeholder='Instructions' name='instructions' onChange={onInputChange} required />
+                                {errors.instructions && <span className='error text-danger'> {errors.instructions}</span>}
+
                             </div>
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary me-2 mt-4 mb-3">Cancel</button>
