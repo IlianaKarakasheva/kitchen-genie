@@ -104,7 +104,7 @@ console.log(filteredRecipes);
                   {/* {filterBy === "name" ?(
                     <input id="recipe-search" type="text" className="form-control" onChange={handleSearchChange} placeholder="Search recipe by name" aria-label="Recipient's username" aria-describedby="button-addon2" />
                   ):
-                  <Select options={options} isMulti className='searchSelect'
+                  <Select options={options} isMulti className='searchSelect' placeholder="Search by products"
                   // onChange={onSelect}
                   />
                   } */}
