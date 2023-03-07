@@ -7,6 +7,7 @@ export default function Navbar() {
                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"></svg> */}
                 <strong>
                     <i className="bi bi-egg-fried me-2"></i>KitchenGenie</strong>
+                    
             </a>
                 <ul class= " navbar-nav">
                     <li class="navbar-item">
@@ -17,7 +18,10 @@ export default function Navbar() {
                             <button class="btn btn-sm ">Saved Recipes</button>
                         </a> */}
                         <a href="/" class="navbar-link">HOME</a>
-                        <a href="/about" class="navbar-link">ABOUT</a>
+                        <a href="/new-recipe" class="btn btn-sm btn-primary">
+                            <b>Add Recipe</b>
+                        </a>
+                        {/* <a href="/about" class="navbar-link">ABOUT</a> */}
                         <a href="/contacts" class="navbar-link">CONTACTS</a>
                     </li>
                 
