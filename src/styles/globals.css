@@ -404,5 +404,29 @@ button[type="submit"]:active {
 }
 /* :DD */
 
-/* Sign-in form */
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:70px;
+	right:30px;
+	background-color:#d29a39;
+	color:#fff;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+.float:active{
+  transform: scale(0.98);
+}
 
+.float i{
+	margin-top:22px;
+  font-size: 40px;
+  line-height: 60px;
+  transition: color 0.3s ease;
+
+}
+.float i:hover{
+  color:#630c42;
+}

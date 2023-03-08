@@ -158,6 +158,9 @@ console.log(filteredRecipes);
                 }
               </div>
             </div>
+            <a href="/new-recipe" className='float'>
+            <i class="bi bi-plus"></i>
+            </a>
           </div>
         </main>
   )
