@@ -25,7 +25,6 @@ export default function NewRecipe() {
             setFormData({...formData, image: event.target.files[0]})
             setErrors ({...errors, image: null })
         }
-
     }
 
     const onRemoveImage = (event) => {
@@ -34,7 +33,6 @@ export default function NewRecipe() {
     }
 
     const onInputChange = (event) => {
-        // event.target.
         const name = event.target.name
         const value = event.target.value
 
@@ -56,7 +54,7 @@ export default function NewRecipe() {
         if(formData.ingredients.length === 0) {
             errors.ingredients = "Please add ingredients"
         }
-        if( formData.image === null){
+        if(formData.image === null){
             errors.image = "Please upload image"
         }
         return errors
@@ -78,14 +76,14 @@ export default function NewRecipe() {
                 const collectionRef= collection(firestore, "recipes")
                 const newRecipeRef = await addDoc(collectionRef, newRecipe)
                 
-                        setFormData({image: null, title:"", time: 0, ingredients:[], instructions:""})
-                        router.push("/")
+                    setFormData({image: null, title:"", time: 0, ingredients:[], instructions:""})
+                    router.push("/")
             }
             
         } catch (error) {
             console.log(error)
+        setErrors({...errors, firebase : error.message})
         }
-
     }   
     
     const options = ingredients.map(ingredient => {
@@ -94,7 +92,6 @@ export default function NewRecipe() {
 
     const onSelect= (option)=> {
         const data =  option.map( option => option.value)
-        // console.log(data, option)
         setFormData({...formData, ingredients:[...data] })
     }
 
@@ -111,7 +108,8 @@ export default function NewRecipe() {
                         }
                         <input type="file" onChange={onImageChange} required placeholder='' />
                         {errors.image && <span className='error text-danger'> {errors.image}</span>}
-
+                        {errors.firebase && <span className='error text-danger'> {errors.firebase}</span>}
+                        
                         {image && <button type="submit" onClick={onRemoveImage} class="btn btn-sm btn-secondary col-2 me-2 mt-4 mb-3">Remove</button>  }
                         
                     </div>
@@ -123,6 +121,8 @@ export default function NewRecipe() {
                             </strong>
                             <input type="text" className='form-control' placeholder='Dish Title' name='title' onChange={onInputChange}  required />
                             {errors.title && <span className='error text-danger'> {errors.title}</span>}
+                            {errors.firebase && <span className='error text-danger'> {errors.firebase}</span>}
+
                         </div>
                         <div className='content'>
                             <div className='time'>
@@ -131,6 +131,7 @@ export default function NewRecipe() {
                                 </strong>
                                 <input type="number" className='form-control' placeholder='Time Needed' name='time' onChange={onInputChange} required />
                                 {errors.time && <span className='error text-danger'> {errors.time}</span>}
+                                {errors.firebase && <span className='error text-danger'> {errors.firebase}</span>}
 
                             </div>
                             <div className='ingredients'>
@@ -139,6 +140,8 @@ export default function NewRecipe() {
                                 </strong>
                                 <Select options={options} isMulti onChange={onSelect}/>
                                 {errors.ingredients && <span className='error text-danger'> {errors.ingredients}</span>}
+                                {errors.firebase && <span className='error text-danger'> {errors.firebase}</span>}
+                                
 
                                 {/* <input type="text" className='form-control' placeholder='Ingredients needed' required /> */}
                             </div>
@@ -148,6 +151,7 @@ export default function NewRecipe() {
                                 </strong>
                                 <textarea rows="9" type="text" className='form-control' placeholder='Instructions' name='instructions' onChange={onInputChange} required />
                                 {errors.instructions && <span className='error text-danger'> {errors.instructions}</span>}
+                                {errors.firebase && <span className='error text-danger'> {errors.firebase}</span>}
 
                             </div>
                         </div>

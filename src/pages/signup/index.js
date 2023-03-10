@@ -8,48 +8,77 @@ import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateC
 import {useAuth} from "./useAuth";
 
 
+
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function SignUp() {
   const [registerEmail, setRegisterEmail] = useState("")
   const [registerPassword, setRegisterPassword] = useState("")
-  const [loginEmail, setLoginEmail] = useState("")
-  const [loginPassword, setLoginPassword] = useState("")
-
-  // const [user, setUser] = useState({})
+  const [errors, setErrors] = useState({})
+  const [userData, setUserData] = useState({email:"", password:""})
   const user = useAuth()
 
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   setUser(currentUser)
-  // })
+const onInputChange = (event) => {
+  const name = event.target.name
+  const value = event.target.value
+  validateUserData()
+  setUserData({...userData, [name]: value})
+  setErrors({...errors, [name]: ""})
+  console.log("valueta:",{[name]: value});
+}
+const onEmailChange = (event) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(event)) {
+      errors.emailreg = "Please enter a valid email address";
+    } 
+    else{
+      setRegisterEmail (event)
+console.log("reg" ,registerEmail);
+errors.emailreg = null
+}
+  setUserData({...userData, [name]: event})
+  setErrors({...errors, [name]: ""})
+}
 
-  const register = async() => {
-    try{
-      const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
-      console.log(user);
-    }catch(error){
-      console.log(error.message);
-    }
+const onPasswordChange = (value) =>{
+  const passwordregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+  if(!passwordregex.test(value)){
+      setErrors({...errors, passreg: "Minimum eight characters, at least one letter and one number"})
+
   }
+  else{
+    setRegisterPassword(value)
+    errors.passreg = null
+  }
+
+  
+  console.log(errors);
+  return errors
+}
+
+const register = async() => {
+  try{
+    const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+  }catch(error){
+  setErrors({...errors, emailreg: "Email already in use"})
+
+  }
+}
+
 
   const logout = async() => {
     await signOut(auth) 
-  }
-  const login = async() =>{
-    try{
-      const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-      console.log(user);
-    }catch(error){
-      console.log(error.message);
-    }
   }
 
   return (
     <div className='signUpPage'>
 
       <h1 class="h3 mb-3 font-weight-normal">Sign up page</h1>
-      <input type={"email"} placeholder='E-mail address'  onChange={(event) => {setRegisterEmail(event.target.value)}} class="form-control"/>
-      <input type={'password'} placeholder='Password'  onChange={(event) => {setRegisterPassword(event.target.value)}} class="form-control"/>
+      <input type={"email"} placeholder='E-mail address' name='emailreg' onChange={(event) => {onEmailChange(event.target.value)}} class="form-control"/>
+      {errors.emailreg && <span className='error text-danger'> {errors.emailreg}</span>}
+      <input type={'password'} placeholder='Password' name='passreg' onChange={(event) => {onPasswordChange(event.target.value)}} class="form-control"/>
+      {errors.passreg && <span className='error text-danger'> {errors.passreg}</span>}
       <button className='signUpButton btn btn-lg btn-primary btn-block' onClick={register}>SIGN UP</button>
       <h3>
         User logged in:
