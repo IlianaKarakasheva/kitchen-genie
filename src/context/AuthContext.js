@@ -15,8 +15,7 @@ useEffect(()=>{
         if(user){
             setUser({
                 uid: user.uid,
-                email: user.email,
-                
+                email: user.email,  
             })
         }
             else{
@@ -27,7 +26,7 @@ useEffect(()=>{
     setLoading(false)
     return () => unsubscribe()
 
-}, [])
+}, [auth])
 
   return <AuthContext.Provider value={{user}}>{loading?null:children}</AuthContext.Provider>;
 };

@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { useAuth } from "../signup/useAuth.js";
+import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 // import { withPublic } from "@/hook/route";
 // import Cookies from "js-cookie"

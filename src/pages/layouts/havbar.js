@@ -1,16 +1,19 @@
 import { firestore, storage, auth } from "../../../firebase/clientApp";
 import {useAuth} from "../signup/useAuth";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth'
+import { useRouter } from "next/router";
 
 
 
 export default function Navbar() {
   const user = useAuth()
+  const router = useRouter()
 
   
   const logout = async() => {
       console.log('user:', user);
     await signOut(auth) 
+    router.push("/signin")
     // Cookies.remove("loggedin")
   }
 

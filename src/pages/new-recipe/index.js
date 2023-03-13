@@ -10,7 +10,7 @@ import { collection, addDoc} from "@firebase/firestore";
 import {ref, uploadBytes, getDownloadURL} from "@firebase/storage";
 import { async } from '@firebase/util'
 import { useRouter } from 'next/router'
-import { useAuth } from '../signup/useAuth'
+import { useAuth } from '../../context/AuthContext'
 
 
 
@@ -23,6 +23,7 @@ export default function NewRecipe() {
     const [errors, setErrors] = useState({})
     const user = useAuth()
 
+    console.log(user);
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
