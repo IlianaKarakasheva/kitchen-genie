@@ -18,10 +18,10 @@ export default function Document() {
       </Head>
       <body>
         
-        <Navbar />
+        {/* <Navbar /> */}
         <Main />
         <NextScript />
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </Html>
   )

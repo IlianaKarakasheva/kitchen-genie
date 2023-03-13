@@ -7,6 +7,8 @@ import { collection, QueryDocumentSnapshot, DocumentData, query, where, limit, g
 import { useState, useEffect } from 'react';
 import Select from 'react-select'
 import {ingredients} from "../../public/ingredients.json"
+import { useAuth } from "../pages/signup/useAuth";
+
 
 
 const recipesCollection = collection(firestore, 'recipes');
@@ -17,6 +19,7 @@ export default function Home() {
   const [searchInput, setSearchInput] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [filterBy, setFilterBy] = useState("name")
+  const user = useAuth();
 
   const getRecipes = async () => {
     const recipeRef = await collection(firestore, "recipes")
@@ -96,7 +99,7 @@ console.log(filteredRecipes);
           <section class="py-5 text-center banner">
             <div class="row py-lg-5">
               <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-bold">Гладни ли сте?</h1>
+                <h1 class="fw-bold">Гладни ли сте, {user?.email}?</h1>
                 <p class="lead">Вижте какво имате в хладилника и разберете какво може да си сготвите</p>
                 <div class="input-group mb-3 search">
                   <button class="btn btn-secondary" type="button" id="button-addon2" onClick={changePlaceholder}><i class="bi bi-arrow-down-up"></i></button>

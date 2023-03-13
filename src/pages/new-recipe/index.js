@@ -10,6 +10,9 @@ import { collection, addDoc} from "@firebase/firestore";
 import {ref, uploadBytes, getDownloadURL} from "@firebase/storage";
 import { async } from '@firebase/util'
 import { useRouter } from 'next/router'
+import { useAuth } from '../signup/useAuth'
+
+
 
  
 const inter = Inter({ subsets: ['latin'] })
@@ -18,6 +21,8 @@ export default function NewRecipe() {
     const [image, setImage] = useState(null)
     const [formData, setFormData] = useState({ image: null, title:"", time: 0, ingredients:[], instructions:""})
     const [errors, setErrors] = useState({})
+    const user = useAuth()
+
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -94,7 +99,14 @@ export default function NewRecipe() {
         const data =  option.map( option => option.value)
         setFormData({...formData, ingredients:[...data] })
     }
+    
+    // const checkLoged=() =>{
+    //     if(!user){
+    //       router.push("/signup")
+    //     }
+    //   }
 
+    //   checkLoged()
     return (
         <div className='addRecipe container '>
             <div className='newRecipe row align-items-center justify-content-center mt-4'>

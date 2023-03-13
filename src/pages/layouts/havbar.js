@@ -1,4 +1,25 @@
+import { firestore, storage, auth } from "../../../firebase/clientApp";
+import {useAuth} from "../signup/useAuth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth'
+
+
+
 export default function Navbar() {
+  const user = useAuth()
+
+  
+  const logout = async() => {
+      console.log('user:', user);
+    await signOut(auth) 
+    // Cookies.remove("loggedin")
+  }
+
+//   console.log("user:", user);
+
+//   const logout = async() => {
+//     await signOut(auth) 
+//   }
+
     return (
         <header class="navbar shadow-sm d-flex flex-wrap">
         
@@ -19,7 +40,7 @@ export default function Navbar() {
                         </a> */}
                         <a href="/" class="navbar-link">HOME</a>
                         <a href="/new-recipe" class="btn btn-sm btn-primary">
-                            <b>Add Recipe</b>
+                            <b>ADD NEW RECIPE</b>
                         </a>
                         {/* <a href="/about" class="navbar-link">ABOUT</a> */}
                         <a href="/contacts" class="navbar-link">CONTACTS</a>
@@ -28,12 +49,26 @@ export default function Navbar() {
                 </ul>
                 <ul class= " navbar-nav">
                     <li class="navbar-item">
-                        <a href="/signin" class="btn btn-sm btn-secondary me-2">
-                            <b>Login</b>  
-                        </a>
-                        <a href="/signup" class="btn btn-sm btn-secondary">
-                            <b>Register</b>
-                        </a>
+                        {/* {user?.email} */}{user ? (
+              <>
+              <a href="#" className="navbar-link me-2">
+                <b>{user.email}</b>
+              </a>
+              <button className="btn btn-sm btn-secondary" onClick={logout}
+              >
+                <b>Logout</b>
+              </button>
+            </>
+          ) : (
+            <>
+              <a href="/signin" className="btn btn-sm btn-secondary me-2">
+                <b>Sign In</b>
+              </a>
+              <a href="/signup" className="btn btn-sm btn-secondary">
+                <b>Register</b>
+              </a>
+            </>
+          )}
                     </li>
                 </ul>
             </div>

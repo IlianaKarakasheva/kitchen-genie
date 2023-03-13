@@ -6,6 +6,8 @@ import { useState } from 'react'
 import { firestore, storage, auth } from '../../../firebase/clientApp';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth'
 import {useAuth} from "./useAuth";
+import { useRouter } from 'next/router'
+// import Cookies from "js-cookie";
 
 
 
@@ -13,11 +15,12 @@ import {useAuth} from "./useAuth";
 const inter = Inter({ subsets: ['latin'] })
 
 export default function SignUp() {
+  const router = useRouter()
   const [registerEmail, setRegisterEmail] = useState("")
   const [registerPassword, setRegisterPassword] = useState("")
   const [errors, setErrors] = useState({})
   const [userData, setUserData] = useState({email:"", password:""})
-  const user = useAuth()
+  const {user} = useAuth()
 
 const onInputChange = (event) => {
   const name = event.target.name
@@ -25,7 +28,7 @@ const onInputChange = (event) => {
   validateUserData()
   setUserData({...userData, [name]: value})
   setErrors({...errors, [name]: ""})
-  console.log("valueta:",{[name]: value});
+  console.log("values:",{[name]: value});
 }
 const onEmailChange = (event) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -60,17 +63,27 @@ const onPasswordChange = (value) =>{
 const register = async() => {
   try{
     const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+    // Cookies.set("loggedin", "true");
+    // router.push("/")
   }catch(error){
   setErrors({...errors, emailreg: "Email already in use"})
-
+    // console.log(error); 
+  }
+}
+const checkLogged=() =>{
+  if(user){
+    router.push("/")
+    //return <h1>"Loading..."</h1>
   }
 }
 
 
   const logout = async() => {
     await signOut(auth) 
+    // Cookies.remove("loggedin")
   }
 
+  checkLogged()
   return (
     <div className='signUpPage'>
 

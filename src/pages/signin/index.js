@@ -10,12 +10,17 @@ import {
   signOut,
 } from "firebase/auth";
 import { useAuth } from "../signup/useAuth.js";
+import { useRouter } from "next/router";
+// import { withPublic } from "@/hook/route";
+// import Cookies from "js-cookie"
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function SignIn() {
+  const router = useRouter()
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [errors, setErrors] = useState({})
   const user = useAuth();
 
   const login = async () => {
@@ -25,23 +30,28 @@ export default function SignIn() {
         loginEmail,
         loginPassword
       );
+      // Cookies.set("loggedin", "true");
+      router.push("/")
       console.log(user);
     } catch (error) {
+  setErrors({...errors, emailreg: "Wrong email or password"})
       console.log(error.message);
     }
   };
   const logout = async () => {
     await signOut(auth);
+    // Cookies.remove("loggedin")
+    router.push("/signin")
     console.log(user);
   };
 
   return (
-    <div className="container justify-content-center align-items-center col">
+    // <div className="container justify-content-center align-items-center col">
       <blockquote>
         {/* <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/> */}
+        {/* <div className="col-3"> */}
+          <div className="signUpPage">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <div className="col-3">
-          <div className="signInPage">
             <label for="inputEmail" class="sr-only">
               Email address
             </label>
@@ -56,6 +66,7 @@ export default function SignIn() {
               required=""
               autofocus=""
             />
+
             <label for="inputPassword" class="sr-only">
               Password
             </label>
@@ -69,6 +80,8 @@ export default function SignIn() {
               }}
               required=""
             />
+                  {errors.emailreg && <span className='error text-danger'> {errors.emailreg}</span>}
+
             <div class="checkbox mb-3">
               <label>
                 {/* <input type="checkbox" value="remember-me" /> Remember me */}
@@ -86,8 +99,10 @@ export default function SignIn() {
             {user?.email}
             <button onClick={logout}>sign out</button>
           </div>
-        </div>
+        {/* </div> */}
       </blockquote>
-    </div>
+    // </div>
   );
 }
+// export default withPublic(SignIn);
+
