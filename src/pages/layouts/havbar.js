@@ -1,25 +1,18 @@
-import { firestore, storage, auth } from "../../../firebase/clientApp";
 import {useAuth} from "../../context/AuthContext";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth'
 import { useRouter } from "next/router";
 import Link from "next/link";
-
-
 
 export default function Navbar() {
   const {user, logout} = useAuth()
   const router = useRouter()
-
   
   const signOut = async() => {
-      // console.log('user:', user);
     await logout() 
     router.push("/signin")
   }
 
     return (
         <header class="navbar shadow-sm d-flex flex-wrap">
-        
             <div class="container">
             <Link href="/" class="navbar-brand d-flex align-items-center">
                 <strong>
@@ -33,7 +26,6 @@ export default function Navbar() {
                         </Link>
                         <Link href="/about" class="navbar-link">ABOUT</Link>
                     </li>
-                
                 </ul>
                 <ul class= " navbar-nav">
                     <li class="navbar-item">

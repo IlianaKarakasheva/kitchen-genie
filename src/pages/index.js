@@ -1,15 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 import { firestore } from '../../firebase/clientApp';
 import { collection, QueryDocumentSnapshot, DocumentData, query, where, limit, getDocs } from "@firebase/firestore";
 import { useState, useEffect } from 'react';
-import Select from 'react-select'
-import {ingredients} from "../../public/ingredients.json"
 import { useAuth } from "../context/AuthContext";
-
-
+import Link from 'next/link';
 
 const recipesCollection = collection(firestore, 'recipes');
 const inter = Inter({ subsets: ['latin'] })
@@ -20,7 +14,6 @@ export default function Home() {
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [filterBy, setFilterBy] = useState("name")
   const {user} = useAuth();
-  console.log(user);
 
   const getRecipes = async () => {
     const recipeRef = await collection(firestore, "recipes")
@@ -60,12 +53,9 @@ export default function Home() {
       setFilterBy("name")
     }
   }
-  const options = ingredients.map(ingredient => {
-    return {value: ingredient, label:ingredient}
-})
+  
   const handleSearchChange = (event) => {
     const newSearchValue = event.target.value
-    console.log( "filterBy:",filterBy);
     setSearchInput(newSearchValue)
     
     if (newSearchValue === "") {
@@ -77,12 +67,6 @@ export default function Home() {
       setFilteredRecipes(filtered);
     }
     else {
-      // const filtered = recipes.filter((recipe) =>
-      //   recipe.ingredients.find(
-      //     ingredient =>(
-      //         ingredient.toLowerCase() === newSearchValue.toLowerCase()
-      //     )
-      //   )
         const filtered = recipes.filter((recipe) =>
           recipe.ingredients.find(
             ingredients =>(
@@ -94,7 +78,6 @@ export default function Home() {
       setFilteredRecipes(filtered);
     }
   }
-console.log(filteredRecipes);
   return (
         <main>
           <section class="py-5 text-center banner">
@@ -162,9 +145,9 @@ console.log(filteredRecipes);
                 }
               </div>
             </div>
-            <a href="/new-recipe" className='float'>
+            <Link href="/new-recipe" className='float'>
             <i class="bi bi-plus"></i>
-            </a>
+            </Link>
           </div>
         </main>
   )

@@ -1,19 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
 import {ingredients} from "../../../public/ingredients.json"
 import Select from 'react-select'
 import { firestore, storage } from '../../../firebase/clientApp';
 import { collection, addDoc} from "@firebase/firestore";
 import {ref, uploadBytes, getDownloadURL} from "@firebase/storage";
-import { async } from '@firebase/util'
 import { useRouter } from 'next/router'
 import { useAuth } from '../../context/AuthContext'
-
-
-
  
 const inter = Inter({ subsets: ['latin'] })
 export default function NewRecipe() {
@@ -21,9 +14,7 @@ export default function NewRecipe() {
     const [image, setImage] = useState(null)
     const [formData, setFormData] = useState({ image: null, title:"", time: 0, ingredients:[], instructions:""})
     const [errors, setErrors] = useState({})
-    // const user= useAuth()
-
-    // console.log(user);
+    const {user}= useAuth()
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -77,8 +68,7 @@ export default function NewRecipe() {
                 const imagesRef = ref(storage, `images/${formData.title}`)
                 await uploadBytes (imagesRef, formData.image).then((snapShot)=> (console.log("image uploaded")))
                 imageUrl = await getDownloadURL (imagesRef)
-                const newRecipe = {image: imageUrl,title: formData.title, time: Number(formData.time), ingredients: formData.ingredients, instructions: formData.instructions}
-                console.log(newRecipe);
+                const newRecipe = {image: imageUrl,title: formData.title, time: Number(formData.time), ingredients: formData.ingredients, instructions: formData.instructions, userId: user.uid}
                 const collectionRef= collection(firestore, "recipes")
                 const newRecipeRef = await addDoc(collectionRef, newRecipe)
                 
@@ -87,7 +77,6 @@ export default function NewRecipe() {
             }
             
         } catch (error) {
-            console.log(error)
         setErrors({...errors, firebase : error.message})
         }
     }   

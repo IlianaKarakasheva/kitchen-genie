@@ -1,9 +1,5 @@
-import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import { useParams } from "react-router-dom";
 import { useRouter } from "next/router";
-import Data from "../../../public/data.json";
 import { firestore } from "../../../firebase/clientApp";
 import {
   collection,
@@ -13,10 +9,14 @@ import {
   where,
   limit,
   getDocs,
+  deleteDoc,
   doc,
   getDoc,
 } from "@firebase/firestore";
+import { storage } from "../../../firebase/clientApp";
+import { ref, deleteObject } from "@firebase/storage";
 import { useState, useEffect } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const recipesCollection = collection(firestore, "recipes");
 
@@ -24,13 +24,14 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Recipe() {
   const router = useRouter();
+  const {user}= useAuth()
+  
 
   const { id } = router.query;
   const [recipe, setRecipe] = useState({});
   const getRecipe = async () => {
     if (id) {
       const recipeRef = await collection(firestore, "recipes");
-      console.log(id);
       const docRef = await doc(recipeRef, id);
       const docSnap = await getDoc(docRef);
       if (docSnap.data()) {
@@ -38,11 +39,23 @@ export default function Recipe() {
       }
     }
   };
+  const handleDelete = async () => {
+    if (id) {
+      const recipeRef = doc(recipesCollection, id);
+      const storageRef = ref(storage, recipe.image);
+      await deleteDoc(recipeRef);
+      await deleteObject(storageRef);
+    
+      router.push("/");
+    }
+  };
+  
 
   useEffect(() => {
     getRecipe();
   }, [id]);
-  console.log(recipe);
+
+  const canEdit = user && recipe.userId === user.uid;
 
   return (
     <div className="recipeContainer container">
@@ -57,7 +70,7 @@ export default function Recipe() {
           </blockquote>
         </div>
         <div className="col-6">
-          <h2 className="recipeTitle">{recipe?.title}</h2>
+          <h2 className="recipeTitle">{recipe?.title} {canEdit &&(<><button className="btn btn-sm btn-primary" onClick={handleDelete}>delete</button> <button className="btn btn-sm btn-secondary">update</button></>)}</h2>
           <div className="recipeDetails row">
             <div className="col-12">
               <h6>Ingredients:</h6>

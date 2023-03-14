@@ -197,10 +197,20 @@ blockquote {
 .btn.btn-primary {
   background-color: #733f5f;
   color: #b28fa7;
+  transition: all ease-in .3s;
   border: none;
+}
+.btn.btn-primary:hover{
+  background-color: #630c42;
 }
 
 .btn.btn-secondary {
+  background-color: #edb654;
+  color: #fff;
+  border: none;
+  transition: all ease-in .3s;
+}
+.btnN.btn-secondary {
   background-color: #edb654;
   color: #fff;
   border: none;
