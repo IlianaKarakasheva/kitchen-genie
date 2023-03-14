@@ -21,9 +21,9 @@ export default function NewRecipe() {
     const [image, setImage] = useState(null)
     const [formData, setFormData] = useState({ image: null, title:"", time: 0, ingredients:[], instructions:""})
     const [errors, setErrors] = useState({})
-    const user = useAuth()
+    // const user= useAuth()
 
-    console.log(user);
+    // console.log(user);
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -100,14 +100,7 @@ export default function NewRecipe() {
         const data =  option.map( option => option.value)
         setFormData({...formData, ingredients:[...data] })
     }
-    
-    // const checkLoged=() =>{
-    //     if(!user){
-    //       router.push("/signup")
-    //     }
-    //   }
 
-    //   checkLoged()
     return (
         <div className='addRecipe container '>
             <div className='newRecipe row align-items-center justify-content-center mt-4'>
@@ -127,7 +120,6 @@ export default function NewRecipe() {
                         
                     </div>
                     <div className='col-6'>
-
                         <div className='title'>
                             <strong>
                                 Label your dish:
@@ -154,9 +146,6 @@ export default function NewRecipe() {
                                 <Select options={options} isMulti onChange={onSelect}/>
                                 {errors.ingredients && <span className='error text-danger'> {errors.ingredients}</span>}
                                 {errors.firebase && <span className='error text-danger'> {errors.firebase}</span>}
-                                
-
-                                {/* <input type="text" className='form-control' placeholder='Ingredients needed' required /> */}
                             </div>
                             <div className='instructions'>
                                 <strong>
@@ -165,7 +154,6 @@ export default function NewRecipe() {
                                 <textarea rows="9" type="text" className='form-control' placeholder='Instructions' name='instructions' onChange={onInputChange} required />
                                 {errors.instructions && <span className='error text-danger'> {errors.instructions}</span>}
                                 {errors.firebase && <span className='error text-danger'> {errors.firebase}</span>}
-
                             </div>
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary me-2 mt-4 mb-3">Cancel</button>

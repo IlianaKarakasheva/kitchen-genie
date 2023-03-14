@@ -7,7 +7,7 @@ import { collection, QueryDocumentSnapshot, DocumentData, query, where, limit, g
 import { useState, useEffect } from 'react';
 import Select from 'react-select'
 import {ingredients} from "../../public/ingredients.json"
-import { useAuth } from "../pages/signup/useAuth";
+import { useAuth } from "../context/AuthContext";
 
 
 
@@ -19,7 +19,8 @@ export default function Home() {
   const [searchInput, setSearchInput] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [filterBy, setFilterBy] = useState("name")
-  const user = useAuth();
+  const {user} = useAuth();
+  console.log(user);
 
   const getRecipes = async () => {
     const recipeRef = await collection(firestore, "recipes")

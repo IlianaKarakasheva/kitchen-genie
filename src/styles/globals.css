@@ -88,6 +88,9 @@ a {
     color-scheme: dark;
   }
 }
+.lead, .fw-bold{
+  color:#fff
+}
 
 .recipeContainer {
   color: black;
@@ -179,10 +182,16 @@ blockquote {
 .navbar {
   background-color: #630c42;
   color: #b28fa7;
+  
 }
 
 .navbar .navbar-brand {
   color: #b28fa7;
+  transition: all ease-in .3s;
+}
+
+.navbar .navbar-brand:hover {
+  color: #b4b2b4;
 }
 
 .btn.btn-primary {
@@ -203,9 +212,11 @@ blockquote {
 }
 
 .navbar .navbar-link {
+  color: #b28fa7;
   padding: 5px 8px;
   text-transform: capitalize;
   transition: all ease-in .3s;
+  text-decoration: none;
 }
 
 .navbar .navbar-link:hover {
@@ -344,7 +355,7 @@ blockquote.card-ingredients {
 
 .signUpPage h1 {
   color:#630c42;
-  font-size: 40px;
+  font-size: 40pnax;
   margin-bottom: 20px;
 }
 

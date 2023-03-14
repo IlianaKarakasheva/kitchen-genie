@@ -6,12 +6,13 @@ import { AuthContextProvider } from '../context/AuthContext'
 import { useRouter } from 'next/router'
 import ProtectedRoute from './layouts/ProtectedRoute'
 
-const noAuthRequired =['/','/signin', 'signup', '/about']
+const noAuthRequired =['/','/signin', '/signup', '/about', '/recipes/[id]']
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
   console.log(noAuthRequired.includes(router.pathname));
-  return <AuthContextProvider>
+  console.log(router);
+  return( <AuthContextProvider>
     
     <Navbar />
     {noAuthRequired.includes(router.pathname)?(
@@ -24,5 +25,5 @@ export default function App({ Component, pageProps }) {
     )}
     <Footer />
 
-  </AuthContextProvider>
+  </AuthContextProvider>)
 }
