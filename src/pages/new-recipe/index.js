@@ -70,9 +70,7 @@ export default function NewRecipe() {
       if (Object.keys(errors).length === 0) {
         let imageUrl = "";
         const imagesRef = ref(storage, `images/${formData.title}`);
-        await uploadBytes(imagesRef, formData.image).then((snapShot) =>
-          console.log("image uploaded") //dava greshka katog go mahna
-        );
+        await uploadBytes(imagesRef, formData.image)
         imageUrl = await getDownloadURL(imagesRef);
         const newRecipe = {
           image: imageUrl,
@@ -83,8 +81,8 @@ export default function NewRecipe() {
           userId: user.uid,
         };
         const collectionRef = collection(firestore, "recipes");
-        //moga li da go mahna
-        const newRecipeRef = await addDoc(collectionRef, newRecipe);
+        
+        await addDoc(collectionRef, newRecipe);
 
         setFormData({
           image: null,

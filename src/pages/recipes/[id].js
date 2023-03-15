@@ -92,12 +92,6 @@ export default function Recipe() {
               <h6>Time needed:</h6>
               <p>{recipe?.time}min</p>
             </div>
-
-            <div className="col-6">
-              <h6>Rating:</h6>
-              <p>{recipe?.rating}/5</p>
-            </div>
-
             <div className="col-12">
               <h6>Instructions:</h6>
               <p>{recipe?.instructions}</p>
@@ -109,16 +103,6 @@ export default function Recipe() {
         <div className="col">
           <hr />
         </div>
-      </div>
-      <div className="row">
-        <h6>Comments:</h6>
-        {/* {recipe?.comments.map((comment) => (
-          <div className='col' key={comment.comment_id}>
-            <blockquote>
-              {comment.description}
-            </blockquote>
-          </div>
-        ))} */}
       </div>
     </div>
   );

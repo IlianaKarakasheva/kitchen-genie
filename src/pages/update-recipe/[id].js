@@ -11,15 +11,20 @@ export default function UpdateRecipe() {
   const router = useRouter();
   const [image, setImage] = useState(null);
   const { id } = router.query;
-
-  const [recipe, setRecipe] = useState({});
   const getRecipe = async () => {
     if (id) {
       const recipeRef = await collection(firestore, "recipes");
       const docRef = await doc(recipeRef, id);
       const docSnap = await getDoc(docRef);
       if (docSnap.data()) {
-        setRecipe(docSnap.data());
+        const recipe = docSnap.data();
+        setFormData({
+          image: recipe.image,
+          title: recipe.title,
+          time: recipe.time,
+          ingredients: recipe.ingredients,
+          instructions: recipe.instructions,
+        });
       }
     }
   };
@@ -28,11 +33,11 @@ export default function UpdateRecipe() {
   }, [id]);
 
   const [formData, setFormData] = useState({
-    image: recipe.image,
-    title: recipe.title,
-    time: recipe.time,
-    ingredients: recipe.ingredients,
-    instructions: recipe.instructions,
+    image: null,
+    title: "",
+    time: "",
+    ingredients: "",
+    instructions: "",
   });
   const [errors, setErrors] = useState({});
   const { user } = useAuth();
@@ -46,7 +51,11 @@ export default function UpdateRecipe() {
   };
 
   const onRemoveImage = (event) => {
-    event.target.previousElementSibling.value = null;
+    // event.target.previousElementSibling.value = null;
+    setFormData({
+      ...formData,
+      image: null,
+    });
     setImage(null);
   };
 
@@ -90,24 +99,18 @@ export default function UpdateRecipe() {
         const imagesRef = ref(storage, `images/${formData.title}`);
 
         if (image) {
-          await uploadBytes(imagesRef, formData.image).then(
-            (snapShot) => console.log("image uploaded") //dava greshka kato go mahna
-          );
+          await uploadBytes(imagesRef, formData.image)
           imageUrl = await getDownloadURL(imagesRef);
         } else {
-          imageUrl = recipe.image;
+          imageUrl = formData.image;
         }
 
         const updatedRecipe = {
           image: imageUrl,
-          title: formData.title ? formData.title : recipe.title,
-          time: Number(formData.time ? formData.time : recipe.time),
-          ingredients: formData.ingredients
-            ? formData.ingredients
-            : recipe.ingredients,
-          instructions: formData.instructions
-            ? formData.instructions
-            : recipe.instructions,
+          title: formData.title,
+          time: Number(formData.time),
+          ingredients: formData.ingredients,
+          instructions: formData.instructions,
           userId: user.uid,
         };
 
@@ -137,19 +140,22 @@ export default function UpdateRecipe() {
     const data = option.map((option) => option.value);
     setFormData({ ...formData, ingredients: [...data] });
   };
-  const preselectedOptions = recipe?.ingredients?.map((option) => {
-    return { value: option, label: option };
+  const preselectedOptions = options.filter((option) => {
+    if(formData.ingredients.includes(option.value)){
+      return option
+    }
   });
+
   return (
     <div className="addRecipe container ">
       <div className="newRecipe row align-items-center justify-content-center mt-4">
         <h4>Edit your recipe</h4>
         <form className="col-12 d-flex flex-row">
           <div className="image col-6 flex-column d-flex justify-content-center">
-            {!recipe.image && "Pick a photo of your dish:"}
-            {recipe.image && (
+            {!formData.image && "Pick a photo of your dish:"}
+            {formData.image && (
               <img
-                src={image ? image : recipe.image}
+                src={image ? image : formData.image}
                 alt="preview image"
                 className="selectedPhoto"
               />
@@ -181,7 +187,7 @@ export default function UpdateRecipe() {
             <div className="title">
               <strong>Label your dish:</strong>
               <input
-                defaultValue={recipe.title}
+                value={formData.title}
                 type="text"
                 className="form-control"
                 placeholder="Dish Title"
@@ -200,7 +206,7 @@ export default function UpdateRecipe() {
               <div className="time">
                 <strong>How long does it take to cook?</strong>
                 <input
-                  defaultValue={recipe.time}
+                  value={formData.time}
                   type="number"
                   className="form-control"
                   placeholder="Time Needed"
@@ -236,7 +242,7 @@ export default function UpdateRecipe() {
               <div className="instructions">
                 <strong>Instructions:</strong>
                 <textarea
-                  defaultValue={recipe.instructions}
+                  value={formData.instructions}
                   rows="9"
                   type="text"
                   className="form-control"

@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import Link from "next/link";
 
-const recipesCollection = collection(firestore, "recipes");
-
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -63,7 +61,7 @@ export default function Home() {
       setFilteredRecipes(filtered);
     } else {
       const filtered = recipes.filter((recipe) =>
-        recipe.ingredients.find((ingredients) => ingredients === newSearchValue)
+        recipe.ingredients.find((ingredients) => ingredients.includes(newSearchValue))
       );
 
       setFilteredRecipes(filtered);
