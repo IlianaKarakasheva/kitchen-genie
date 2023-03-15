@@ -6,7 +6,6 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../../firebase/clientApp";
-import { json } from "react-router-dom";
 
 const AuthContext = createContext({});
 

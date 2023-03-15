@@ -52,15 +52,16 @@ export default function SignIn() {
         placeholder="Enter email"
         value={data.email}
         onChange={(event) => {
-        setData({ ...data, email: event.target.value })
-        setErrors({
-          ...errors,
-          emaillog: null,
-        });}}
+          setData({ ...data, email: event.target.value });
+          setErrors({
+            ...errors,
+            emaillog: null,
+          });
+        }}
         required=""
         autofocus=""
       />
-       {errors.emaillog && (
+      {errors.emaillog && (
         <span className="error text-danger"> {errors.emaillog}</span>
       )}
 
@@ -75,27 +76,25 @@ export default function SignIn() {
         placeholder="Enter password"
         value={data.password}
         onChange={(event) => {
-        setData({ ...data, password: event.target.value })
-        setErrors({
-          ...errors,
-          passlog: null,
-        });}}
+          setData({ ...data, password: event.target.value });
+          setErrors({
+            ...errors,
+            passlog: null,
+          });
+        }}
         required=""
       />
       {errors.invalidData && (
         <span className="error text-danger"> {errors.invalidData}</span>
       )}
-       {errors.passlog && (
+      {errors.passlog && (
         <span className="error text-danger"> {errors.passlog}</span>
       )}
 
       <div class="checkbox mb-3">
         <label></label>
       </div>
-      <button
-        class="btn btn-lg btn-primary btn-block"
-        onClick={handleLogin}
-      >
+      <button class="btn btn-lg btn-primary btn-block" onClick={handleLogin}>
         SIGN IN
       </button>
     </div>

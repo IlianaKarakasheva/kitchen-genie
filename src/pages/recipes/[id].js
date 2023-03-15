@@ -3,10 +3,8 @@ import { firestore } from "../../../firebase/clientApp";
 import { collection, deleteDoc, doc, getDoc } from "@firebase/firestore";
 import { storage } from "../../../firebase/clientApp";
 import { ref, deleteObject } from "@firebase/storage";
-import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
-import { async } from "@firebase/util";
 
 const recipesCollection = collection(firestore, "recipes");
 
@@ -48,7 +46,7 @@ export default function Recipe({ recipe }) {
                 <Link href={"/update-recipe/" + id}>
                   <button
                     className="btn btn-sm btn-secondary"
-                    style={{ marginRight: "10px" }}
+                    style={{ marginRight: "5px", marginLeft: "10px" }}
                   >
                     EDIT
                   </button>

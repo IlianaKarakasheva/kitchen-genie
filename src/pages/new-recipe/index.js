@@ -1,4 +1,3 @@
-import { Inter } from "@next/font/google";
 import { useState } from "react";
 import { ingredients } from "../../../public/ingredients.json";
 import Select from "react-select";
@@ -8,7 +7,6 @@ import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
 
-const inter = Inter({ subsets: ["latin"] });
 export default function NewRecipe() {
   const router = useRouter();
   const [image, setImage] = useState(null);
@@ -63,14 +61,14 @@ export default function NewRecipe() {
     return errors;
   };
 
-  const onFormSubmit = async (event) => {
+  const onFormSubmit = async () => {
     try {
       const errors = validateFormData(formData);
       setErrors(errors);
       if (Object.keys(errors).length === 0) {
         let imageUrl = "";
         const imagesRef = ref(storage, `images/${formData.title}`);
-        await uploadBytes(imagesRef, formData.image)
+        await uploadBytes(imagesRef, formData.image);
         imageUrl = await getDownloadURL(imagesRef);
         const newRecipe = {
           image: imageUrl,
@@ -81,7 +79,7 @@ export default function NewRecipe() {
           userId: user.uid,
         };
         const collectionRef = collection(firestore, "recipes");
-        
+
         await addDoc(collectionRef, newRecipe);
 
         setFormData({

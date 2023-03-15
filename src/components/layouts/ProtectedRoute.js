@@ -5,7 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth();
   const router = useRouter();
-  
+
   useEffect(() => {
     if (!user) {
       router.push("/signin");
