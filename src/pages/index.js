@@ -48,7 +48,7 @@ export default function Home({ recipes }) {
       <section class="py-5 text-center banner">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-bold">Гладни ли сте, {user?.email}?</h1>
+            <h1 class="fw-bold">Гладни ли сте?</h1>
             <p class="lead">
               Вижте какво имате в хладилника и разберете какво може да си
               сготвите
