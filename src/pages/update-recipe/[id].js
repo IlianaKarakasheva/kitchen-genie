@@ -1,4 +1,3 @@
-import { Inter } from "@next/font/google";
 import { useEffect, useState } from "react";
 import { ingredients } from "../../../public/ingredients.json";
 import Select from "react-select";
@@ -7,31 +6,26 @@ import { collection, addDoc, doc, getDoc, setDoc } from "@firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
-import { async } from "@firebase/util";
 import Link from "next/link";
-import { Form } from "react-router-dom";
-
-const inter = Inter({ subsets: ["latin"] });
 export default function UpdateRecipe() {
-    const router = useRouter();
-    const [image, setImage] = useState(null);
-    const { id } = router.query;
-    
-    const [recipe, setRecipe] = useState({});
-    const getRecipe = async () => {
-      if (id) {
-        const recipeRef = await collection(firestore, "recipes");
-        const docRef = await doc(recipeRef, id);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.data()) {
-          setRecipe(docSnap.data());
-          console.log(recipe.ingredients);
-        }
+  const router = useRouter();
+  const [image, setImage] = useState(null);
+  const { id } = router.query;
+
+  const [recipe, setRecipe] = useState({});
+  const getRecipe = async () => {
+    if (id) {
+      const recipeRef = await collection(firestore, "recipes");
+      const docRef = await doc(recipeRef, id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.data()) {
+        setRecipe(docSnap.data());
       }
-    };
-    useEffect(() => {
-      getRecipe();
-    }, [id]);
+    }
+  };
+  useEffect(() => {
+    getRecipe();
+  }, [id]);
 
   const [formData, setFormData] = useState({
     image: recipe.image,
@@ -42,7 +36,6 @@ export default function UpdateRecipe() {
   });
   const [errors, setErrors] = useState({});
   const { user } = useAuth();
-
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -67,56 +60,60 @@ export default function UpdateRecipe() {
 
   const validateFormData = (formData) => {
     const errors = {};
-    if (formData.title.trim() === "") {
-      errors.title = "Please enter title";
-    }
-    if (formData.time <= 0) {
-      errors.time = "Please enter time";
-    }
-    if (formData.instructions.trim() === "") {
-      errors.instructions = "Please enter instructions";
-    }
-    if (formData.ingredients.length === 0) {
-      errors.ingredients = "Please add ingredients";
-    }
-    if (formData.image === null) {
-      errors.image = "Please upload image";
-    }
+    // if (formData.title.trim() === "") {
+    //   errors.title = "Please enter title";
+    // }
+    // if (formData.time <= 0) {
+    //   errors.time = "Please enter time";
+    // }
+    // if (formData.instructions.trim() === "") {
+    //   errors.instructions = "Please enter instructions";
+    // }
+    // if (formData.ingredients.length === 0) {
+    //   errors.ingredients = "Please add ingredients";
+    // }
+    // if (formData.image === null) {
+    //   errors.image = "Please upload image";
+    // }
     return errors;
   };
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       const errors = validateFormData(formData);
       setErrors(errors);
-  
+
       if (Object.keys(errors).length === 0) {
         let imageUrl = "";
         const imagesRef = ref(storage, `images/${formData.title}`);
-  
+
         if (image) {
           await uploadBytes(imagesRef, formData.image).then((snapShot) =>
-            console.log("image uploaded")
+            console.log("image uploaded") //dava greshka kato go mahna
           );
           imageUrl = await getDownloadURL(imagesRef);
         } else {
           imageUrl = recipe.image;
         }
-  
+
         const updatedRecipe = {
           image: imageUrl,
           title: formData.title ? formData.title : recipe.title,
-          time: Number(formData.time ?  formData.time : recipe.time),
-          ingredients: formData.ingredients ? formData.ingredients: recipe.ingredients,
-          instructions: formData.instructions ? formData.instructions : recipe.instructions,
+          time: Number(formData.time ? formData.time : recipe.time),
+          ingredients: formData.ingredients
+            ? formData.ingredients
+            : recipe.ingredients,
+          instructions: formData.instructions
+            ? formData.instructions
+            : recipe.instructions,
           userId: user.uid,
         };
-  
+
         const docRef = doc(firestore, "recipes", id);
         await setDoc(docRef, updatedRecipe);
-  
+
         setFormData({
           image: null,
           title: "",
@@ -124,14 +121,13 @@ export default function UpdateRecipe() {
           ingredients: [],
           instructions: "",
         });
-  
-        router.push("/recipes/"+id);
+
+        router.push("/recipes/" + id);
       }
     } catch (error) {
       setErrors({ ...errors, firebase: error.message });
     }
   };
-  
 
   const options = ingredients.map((ingredient) => {
     return { value: ingredient, label: ingredient };
@@ -144,9 +140,6 @@ export default function UpdateRecipe() {
   const preselectedOptions = recipe?.ingredients?.map((option) => {
     return { value: option, label: option };
   });
-  console.log(recipe);
-  console.log(preselectedOptions);
-
   return (
     <div className="addRecipe container ">
       <div className="newRecipe row align-items-center justify-content-center mt-4">
@@ -263,10 +256,13 @@ export default function UpdateRecipe() {
                 )}
               </div>
             </div>
-            <Link href={"/recipes/"+id}>
-            <button type="submit" class="btn btn-sm btn-primary me-2 mt-4 mb-3">
-              Cancel
-            </button>
+            <Link href={"/recipes/" + id}>
+              <button
+                type="submit"
+                class="btn btn-sm btn-primary me-2 mt-4 mb-3"
+              >
+                Cancel
+              </button>
             </Link>
             <button
               type="button"

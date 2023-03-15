@@ -1,32 +1,38 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --primary-glow: conic-gradient(from 180deg at 50% 50%,
-      #16abff33 0deg,
-      #0885ff33 55deg,
-      #54d6ff33 120deg,
-      #0071ff33 160deg,
-      transparent 360deg);
-  --secondary-glow: radial-gradient(rgba(255, 255, 255, 1),
-      rgba(247, 240, 240, 0.979));
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(247, 240, 240, 0.979)
+  );
 
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(#00000080,
-      #00000040,
-      #00000030,
-      #00000020,
-      #00000010,
-      #00000010,
-      #00000080);
+  --tile-border: conic-gradient(
+    #00000080,
+    #00000040,
+    #00000030,
+    #00000020,
+    #00000010,
+    #00000010,
+    #00000080
+  );
 
   --callout-rgb: 238, 240, 241;
   --callout-border-rgb: 172, 175, 176;
@@ -41,20 +47,24 @@
     --background-end-rgb: 0, 0, 0;
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(to bottom right,
-        rgba(1, 65, 255, 0),
-        rgba(1, 65, 255, 0),
-        rgba(1, 65, 255, 0.3));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
 
     --tile-start-rgb: 2, 13, 46;
     --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(#ffffff80,
-        #ffffff40,
-        #ffffff30,
-        #ffffff20,
-        #ffffff10,
-        #ffffff10,
-        #ffffff80);
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
 
     --callout-rgb: 20, 20, 20;
     --callout-border-rgb: 108, 108, 108;
@@ -88,8 +98,9 @@ a {
     color-scheme: dark;
   }
 }
-.lead, .fw-bold{
-  color:#fff
+.lead,
+.fw-bold {
+  color: #fff;
 }
 
 .recipeContainer {
@@ -182,12 +193,11 @@ blockquote {
 .navbar {
   background-color: #630c42;
   color: #b28fa7;
-  
 }
 
 .navbar .navbar-brand {
   color: #b28fa7;
-  transition: all ease-in .3s;
+  transition: all ease-in 0.3s;
 }
 
 .navbar .navbar-brand:hover {
@@ -197,10 +207,10 @@ blockquote {
 .btn.btn-primary {
   background-color: #733f5f;
   color: #b28fa7;
-  transition: all ease-in .3s;
+  transition: all ease-in 0.3s;
   border: none;
 }
-.btn.btn-primary:hover{
+.btn.btn-primary:hover {
   background-color: #630c42;
 }
 
@@ -208,13 +218,13 @@ blockquote {
   background-color: #edb654;
   color: #fff;
   border: none;
-  transition: all ease-in .3s;
+  transition: all ease-in 0.3s;
 }
 .btnN.btn-secondary {
   background-color: #edb654;
   color: #fff;
   border: none;
-  transition: all ease-in .3s;
+  transition: all ease-in 0.3s;
 }
 
 .btn.btn.btn-secondary:hover {
@@ -225,16 +235,16 @@ blockquote {
   color: #b28fa7;
   padding: 5px 8px;
   text-transform: capitalize;
-  transition: all ease-in .3s;
+  transition: all ease-in 0.3s;
   text-decoration: none;
 }
 
 .navbar .navbar-link:hover {
-  color: white
+  color: white;
 }
 
 .banner {
-  background: url('/images/banner01.jpg');
+  background: url("/images/banner01.jpg");
   background-size: cover;
 }
 
@@ -260,7 +270,7 @@ footer.navbar .navbar-brand {
 
 .card-text .card-title {
   color: #630c42;
-  transition: ease-in .3s;
+  transition: ease-in 0.3s;
 }
 
 .card-text .card-title:hover {
@@ -279,8 +289,8 @@ blockquote.card-ingredients {
   display: flex;
   align-items: center;
   text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: no
+  overflow: hidden;
+  white-space: no;
 }
 
 .card {
@@ -290,21 +300,20 @@ blockquote.card-ingredients {
   border: #630c42;
   border-radius: 20px;
 }
-.newRecipe{
+.newRecipe {
   color: #630c42;
   background-color: #f5f5f5;
   border-radius: 20px;
   padding: 20px;
   margin-bottom: 20px;
 }
-.addRecipe{
+.addRecipe {
   /* background-color: #ff1fa92a;
   border-radius: 20px; */
   /* height: 501px; */
   margin-bottom: 20px;
-  
 }
-.addRecipe .selectedPhoto{
+.addRecipe .selectedPhoto {
   margin-right: 15px;
   margin-bottom: 15px;
   border-radius: 5px;
@@ -318,7 +327,7 @@ blockquote.card-ingredients {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
 }
 .addRecipe button {
@@ -328,7 +337,7 @@ blockquote.card-ingredients {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   cursor: pointer;
 }
@@ -340,15 +349,14 @@ blockquote.card-ingredients {
   background-color: #ff1fa9;
 }
 
-.dbDisplay{
-  color:#630c42
+.dbDisplay {
+  color: #630c42;
 }
-.searchSelect{
+.searchSelect {
   color: #630c42;
 }
 
-
-.signUpPage{
+.signUpPage {
   color: #630c42;
   display: flex;
   flex-direction: column;
@@ -364,7 +372,7 @@ blockquote.card-ingredients {
 } */
 
 .signUpPage h1 {
-  color:#630c42;
+  color: #630c42;
   font-size: 40pnax;
   margin-bottom: 20px;
 }
@@ -412,7 +420,7 @@ blockquote.card-ingredients {
   transition: all 0.2s ease-in-out;
 }
 button[type="submit"]:hover {
-  background-color:#630c42;
+  background-color: #630c42;
 }
 /* :DD */
 button[type="submit"]:active {
@@ -420,29 +428,28 @@ button[type="submit"]:active {
 }
 /* :DD */
 
-.float{
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:70px;
-	right:30px;
-	background-color:#d29a39;
-	color:#fff;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 70px;
+  right: 30px;
+  background-color: #d29a39;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
 }
-.float:active{
+.float:active {
   transform: scale(0.98);
 }
 
-.float i{
-	margin-top:22px;
+.float i {
+  margin-top: 22px;
   font-size: 40px;
   line-height: 60px;
   transition: color 0.3s ease;
-
 }
-.float i:hover{
-  color:#630c42;
+.float i:hover {
+  color: #630c42;
 }

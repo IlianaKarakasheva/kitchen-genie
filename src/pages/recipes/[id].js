@@ -3,12 +3,6 @@ import { useRouter } from "next/router";
 import { firestore } from "../../../firebase/clientApp";
 import {
   collection,
-  QueryDocumentSnapshot,
-  DocumentData,
-  query,
-  where,
-  limit,
-  getDocs,
   deleteDoc,
   doc,
   getDoc,
@@ -20,8 +14,6 @@ import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 
 const recipesCollection = collection(firestore, "recipes");
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Recipe() {
   const router = useRouter();
