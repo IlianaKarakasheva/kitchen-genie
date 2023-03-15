@@ -308,9 +308,6 @@ blockquote.card-ingredients {
   margin-bottom: 20px;
 }
 .addRecipe {
-  /* background-color: #ff1fa92a;
-  border-radius: 20px; */
-  /* height: 501px; */
   margin-bottom: 20px;
 }
 .addRecipe .selectedPhoto {
@@ -363,13 +360,6 @@ blockquote.card-ingredients {
   align-items: center;
   margin-top: 40px;
 }
-/* .signInPage{
-  color: #630c42;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-} */
 
 .signUpPage h1 {
   color: #630c42;
@@ -453,3 +443,4 @@ button[type="submit"]:active {
 .float i:hover {
   color: #630c42;
 }
+

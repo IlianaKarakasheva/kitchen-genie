@@ -90,8 +90,8 @@ export default function UpdateRecipe() {
         const imagesRef = ref(storage, `images/${formData.title}`);
 
         if (image) {
-          await uploadBytes(imagesRef, formData.image).then((snapShot) =>
-            console.log("image uploaded") //dava greshka kato go mahna
+          await uploadBytes(imagesRef, formData.image).then(
+            (snapShot) => console.log("image uploaded") //dava greshka kato go mahna
           );
           imageUrl = await getDownloadURL(imagesRef);
         } else {
@@ -143,7 +143,7 @@ export default function UpdateRecipe() {
   return (
     <div className="addRecipe container ">
       <div className="newRecipe row align-items-center justify-content-center mt-4">
-        <h4>Create a new recipe!</h4>
+        <h4>Edit your recipe</h4>
         <form className="col-12 d-flex flex-row">
           <div className="image col-6 flex-column d-flex justify-content-center">
             {!recipe.image && "Pick a photo of your dish:"}

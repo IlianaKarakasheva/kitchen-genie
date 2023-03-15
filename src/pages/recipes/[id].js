@@ -1,12 +1,6 @@
-import { Inter } from "@next/font/google";
 import { useRouter } from "next/router";
 import { firestore } from "../../../firebase/clientApp";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-} from "@firebase/firestore";
+import { collection, deleteDoc, doc, getDoc } from "@firebase/firestore";
 import { storage } from "../../../firebase/clientApp";
 import { ref, deleteObject } from "@firebase/storage";
 import { useState, useEffect } from "react";
@@ -17,7 +11,7 @@ const recipesCollection = collection(firestore, "recipes");
 
 export default function Recipe() {
   const router = useRouter();
-  const {user}= useAuth()
+  const { user } = useAuth();
   const { id } = router.query;
   const [recipe, setRecipe] = useState({});
   const getRecipe = async () => {
@@ -36,7 +30,7 @@ export default function Recipe() {
       const storageRef = ref(storage, recipe.image);
       await deleteDoc(recipeRef);
       await deleteObject(storageRef);
-    
+
       router.push("/");
     }
   };
@@ -55,18 +49,33 @@ export default function Recipe() {
             <img
               src={`${recipe.image ? recipe?.image : "nophoto.png"}`}
               alt={recipe?.title}
-              style={{width: "100%", height: "auto"}}
+              style={{ width: "100%", height: "auto" }}
             />
           </blockquote>
         </div>
         <div className="col-6">
-          <h2 className="recipeTitle">{recipe?.title} {canEdit &&
-          (<>
-          <button className="btn btn-sm btn-primary" onClick={handleDelete}>delete</button> 
-          <Link href={"/update-recipe/"+id}>
-          <button className="btn btn-sm btn-secondary">update</button>
-          </Link>
-          </>)}</h2>
+          <h2 className="recipeTitle">
+            {recipe?.title}{" "}
+            {canEdit && (
+              <>
+                <Link href={"/update-recipe/" + id}>
+                  <button
+                    className="btn btn-sm btn-secondary"
+                    style={{ marginRight: "10px" }}
+                  >
+                    EDIT
+                  </button>
+                </Link>
+                <button
+                  className="btn btn-sm btn-primary"
+                  onClick={handleDelete}
+                  style={{ backgroundColor: "#630c42" }}
+                >
+                  DELETE
+                </button>
+              </>
+            )}
+          </h2>
           <div className="recipeDetails row">
             <div className="col-12">
               <h6>Ingredients:</h6>
