@@ -6,42 +6,38 @@ export default function SignUp() {
   const router = useRouter();
   const [errors, setErrors] = useState({});
   const [userData, setUserData] = useState({ email: "", password: "" });
-  const { user, register, logout } = useAuth();
+  const { user, register } = useAuth();
 
-  const onEmailChange = (event) => {
+  const validateUserFormData = (formData) => {
+    const errors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(event)) {
+    const passwordregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    if (formData.email.trim() === "") {
+      errors.emailreg = "Please enter email";
+    } else if (!emailRegex.test(formData.email)) {
       errors.emailreg = "Please enter a valid email address";
-    } else {
-      setRegisterEmail(event);
-      errors.emailreg = null;
     }
 
-    setUserData({ ...userData, [name]: event });
-    setErrors({ ...errors, [name]: "" });
-  };
-
-  const onPasswordChange = (value) => {
-    const passwordregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if (!passwordregex.test(value)) {
-      setErrors({
-        ...errors,
-        passreg: "Minimum eight characters, at least one letter and one number",
-      });
-    } else {
-      setRegisterPassword(value);
-      errors.passreg = null;
+    if (formData.password.trim() === "") {
+      errors.passreg = "Please enter password";
+    } else if (!passwordregex.test(formData.password)) {
+      errors.passreg =
+        "Minimum eight characters, at least one letter and one number";
     }
     return errors;
   };
 
   const handleRegister = async () => {
     event.preventDefault();
-
-    try {
-      await register(userData.email, userData.password);
-    } catch (error) {
-      setErrors({ ...errors, emailreg: "Email already in use" });
+    const errors = validateUserFormData(userData);
+    setErrors(errors);
+    if (Object.keys(errors).length === 0) {
+      try {
+        await register(userData.email, userData.password);
+      } catch (error) {
+        setErrors({ ...errors, emailreg: "Email already in use" });
+      }
     }
   };
 
@@ -59,9 +55,13 @@ export default function SignUp() {
         placeholder="E-mail address"
         name="emailreg"
         value={userData.email}
-        onChange={(event) =>
-          setUserData({ ...userData, email: event.target.value })
-        }
+        onChange={(event) => {
+          setUserData({ ...userData, email: event.target.value });
+          setErrors({
+            ...errors,
+            emailreg: null,
+          });
+        }}
         class="form-control"
       />
       {errors.emailreg && (
@@ -72,9 +72,13 @@ export default function SignUp() {
         placeholder="Password"
         name="passreg"
         value={userData.password}
-        onChange={(event) =>
-          setUserData({ ...userData, password: event.target.value })
-        }
+        onChange={(event) => {
+          setUserData({ ...userData, password: event.target.value });
+          setErrors({
+            ...errors,
+            passreg: null,
+          });
+        }}
         class="form-control"
       />
       {errors.passreg && (
@@ -85,11 +89,6 @@ export default function SignUp() {
         onClick={handleRegister}
       >
         SIGN UP
-      </button>
-      <h3>User logged in:</h3>
-      {user?.email}
-      <button className="mb-3" onClick={logout}>
-        sign out
       </button>
     </div>
   );

@@ -6,17 +6,30 @@ export default function SignIn() {
   const router = useRouter();
   const [errors, setErrors] = useState({});
   const { login, user } = useAuth();
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+  const [data, setData] = useState({ email: "", password: "" });
+
+  const validateUserFormData = (formData) => {
+    const errors = {};
+    if (formData.email.trim() === "") {
+      errors.emaillog = "Please enter email";
+    }
+    if (formData.password.trim() === "") {
+      errors.passlog = "Please enter password";
+    }
+    return errors;
+  };
 
   const handleLogin = async () => {
-    try {
-      await login(data.email, data.password);
-      router.push("/");
-    } catch (error) {
-      setErrors({ ...errors, emailreg: "Wrong email or password" });
+    const errors = validateUserFormData(data);
+    setErrors(errors);
+    console.log(errors);
+    if (Object.keys(errors).length === 0) {
+      try {
+        await login(data.email, data.password);
+        router.push("/");
+      } catch (error) {
+        setErrors({ ...errors, invalidData: "Wrong email or password" });
+      }
     }
   };
 
@@ -26,52 +39,65 @@ export default function SignIn() {
     }
   }, [user]);
   return (
-    <blockquote>
-      <div className="signUpPage">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">
-          Email address
-        </label>
-        <input
-          type="email"
-          id="inputEmail"
-          class="form-control"
-          placeholder="Enter email"
-          value={data.email}
-          onChange={(event) => setData({ ...data, email: event.target.value })}
-          required=""
-          autofocus=""
-        />
+    <div className="signUpPage">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" class="sr-only">
+        Email address
+      </label>
+      <input
+        type="email"
+        name="emaillog"
+        id="inputEmail"
+        class="form-control"
+        placeholder="Enter email"
+        value={data.email}
+        onChange={(event) => {
+        setData({ ...data, email: event.target.value })
+        setErrors({
+          ...errors,
+          emaillog: null,
+        });}}
+        required=""
+        autofocus=""
+      />
+       {errors.emaillog && (
+        <span className="error text-danger"> {errors.emaillog}</span>
+      )}
 
-        <label for="inputPassword" class="sr-only">
-          Password
-        </label>
-        <input
-          type="password"
-          id="inputPassword"
-          class="form-control"
-          placeholder="Enter password"
-          value={data.password}
-          onChange={(event) =>
-            setData({ ...data, password: event.target.value })
-          }
-          required=""
-        />
-        {errors.emailreg && (
-          <span className="error text-danger"> {errors.emailreg}</span>
-        )}
+      <label for="inputPassword" class="sr-only">
+        Password
+      </label>
+      <input
+        type="password"
+        name="passlog"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Enter password"
+        value={data.password}
+        onChange={(event) => {
+        setData({ ...data, password: event.target.value })
+        setErrors({
+          ...errors,
+          passlog: null,
+        });}}
+        required=""
+      />
+      {errors.invalidData && (
+        <span className="error text-danger"> {errors.invalidData}</span>
+      )}
+       {errors.passlog && (
+        <span className="error text-danger"> {errors.passlog}</span>
+      )}
 
-        <div class="checkbox mb-3">
-          <label></label>
-        </div>
-        <button
-          class="btn btn-lg btn-primary btn-block"
-          type="submit"
-          onClick={handleLogin}
-        >
-          Sign in
-        </button>
+      <div class="checkbox mb-3">
+        <label></label>
       </div>
-    </blockquote>
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        onClick={handleLogin}
+      >
+        SIGN IN
+      </button>
+    </div>
   );
 }

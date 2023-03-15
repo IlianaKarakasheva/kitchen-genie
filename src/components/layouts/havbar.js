@@ -24,9 +24,6 @@ export default function Navbar() {
             <Link href="/" class="navbar-link">
               HOME
             </Link>
-            <Link href="/new-recipe" class="btn btn-sm btn-primary">
-              <b>ADD NEW RECIPE</b>
-            </Link>
             <Link href="/about" class="navbar-link">
               ABOUT
             </Link>

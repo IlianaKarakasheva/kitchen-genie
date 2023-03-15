@@ -6,24 +6,15 @@ import { ref, deleteObject } from "@firebase/storage";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
+import { async } from "@firebase/util";
 
 const recipesCollection = collection(firestore, "recipes");
 
-export default function Recipe() {
+export default function Recipe({ recipe }) {
   const router = useRouter();
   const { user } = useAuth();
   const { id } = router.query;
-  const [recipe, setRecipe] = useState({});
-  const getRecipe = async () => {
-    if (id) {
-      const recipeRef = await collection(firestore, "recipes");
-      const docRef = await doc(recipeRef, id);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.data()) {
-        setRecipe(docSnap.data());
-      }
-    }
-  };
+
   const handleDelete = async () => {
     if (id) {
       const recipeRef = doc(recipesCollection, id);
@@ -34,10 +25,6 @@ export default function Recipe() {
       router.push("/");
     }
   };
-
-  useEffect(() => {
-    getRecipe();
-  }, [id]);
 
   const canEdit = user && recipe.userId === user.uid;
 
@@ -53,9 +40,9 @@ export default function Recipe() {
             />
           </blockquote>
         </div>
-        <div className="col-6">
+        <div className="col-md-6">
           <h2 className="recipeTitle">
-            {recipe?.title}{" "}
+            {recipe?.title}
             {canEdit && (
               <>
                 <Link href={"/update-recipe/" + id}>
@@ -77,7 +64,7 @@ export default function Recipe() {
             )}
           </h2>
           <div className="recipeDetails row">
-            <div className="col-12">
+            <div className="col-md-12">
               <h6>Ingredients:</h6>
 
               <p>
@@ -88,11 +75,11 @@ export default function Recipe() {
                   })}
               </p>
             </div>
-            <div className="col-6">
+            <div className="col-md-6">
               <h6>Time needed:</h6>
               <p>{recipe?.time}min</p>
             </div>
-            <div className="col-12">
+            <div className="col-md-12">
               <h6>Instructions:</h6>
               <p>{recipe?.instructions}</p>
             </div>
@@ -106,4 +93,20 @@ export default function Recipe() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+  const getRecipe = async () => {
+    if (id) {
+      const recipeRef = await collection(firestore, "recipes");
+      const docRef = await doc(recipeRef, id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.data()) {
+        return docSnap.data();
+      }
+    }
+  };
+  const recipe = await getRecipe();
+  return { props: { recipe } };
 }

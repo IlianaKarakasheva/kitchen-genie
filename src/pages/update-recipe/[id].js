@@ -7,38 +7,13 @@ import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
-export default function UpdateRecipe() {
+import { async } from "@firebase/util";
+export default function UpdateRecipe({ recipe }) {
   const router = useRouter();
   const [image, setImage] = useState(null);
   const { id } = router.query;
-  const getRecipe = async () => {
-    if (id) {
-      const recipeRef = await collection(firestore, "recipes");
-      const docRef = await doc(recipeRef, id);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.data()) {
-        const recipe = docSnap.data();
-        setFormData({
-          image: recipe.image,
-          title: recipe.title,
-          time: recipe.time,
-          ingredients: recipe.ingredients,
-          instructions: recipe.instructions,
-        });
-      }
-    }
-  };
-  useEffect(() => {
-    getRecipe();
-  }, [id]);
 
-  const [formData, setFormData] = useState({
-    image: null,
-    title: "",
-    time: "",
-    ingredients: "",
-    instructions: "",
-  });
+  const [formData, setFormData] = useState(recipe);
   const [errors, setErrors] = useState({});
   const { user } = useAuth();
 
@@ -69,21 +44,21 @@ export default function UpdateRecipe() {
 
   const validateFormData = (formData) => {
     const errors = {};
-    // if (formData.title.trim() === "") {
-    //   errors.title = "Please enter title";
-    // }
-    // if (formData.time <= 0) {
-    //   errors.time = "Please enter time";
-    // }
-    // if (formData.instructions.trim() === "") {
-    //   errors.instructions = "Please enter instructions";
-    // }
-    // if (formData.ingredients.length === 0) {
-    //   errors.ingredients = "Please add ingredients";
-    // }
-    // if (formData.image === null) {
-    //   errors.image = "Please upload image";
-    // }
+    if (formData.title.trim() === "") {
+      errors.title = "Please enter title";
+    }
+    if (formData.time <= 0) {
+      errors.time = "Please enter time";
+    }
+    if (formData.instructions.trim() === "") {
+      errors.instructions = "Please enter instructions";
+    }
+    if (formData.ingredients.length === 0) {
+      errors.ingredients = "Please add ingredients";
+    }
+    if (formData.image === null) {
+      errors.image = "Please upload image";
+    }
     return errors;
   };
 
@@ -99,7 +74,7 @@ export default function UpdateRecipe() {
         const imagesRef = ref(storage, `images/${formData.title}`);
 
         if (image) {
-          await uploadBytes(imagesRef, formData.image)
+          await uploadBytes(imagesRef, formData.image);
           imageUrl = await getDownloadURL(imagesRef);
         } else {
           imageUrl = formData.image;
@@ -141,8 +116,8 @@ export default function UpdateRecipe() {
     setFormData({ ...formData, ingredients: [...data] });
   };
   const preselectedOptions = options.filter((option) => {
-    if(formData.ingredients.includes(option.value)){
-      return option
+    if (formData.ingredients.includes(option.value)) {
+      return option;
     }
   });
 
@@ -282,4 +257,27 @@ export default function UpdateRecipe() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+  const getRecipe = async () => {
+    if (id) {
+      const recipeRef = await collection(firestore, "recipes");
+      const docRef = await doc(recipeRef, id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.data()) {
+        const recipe = docSnap.data();
+        return {
+          image: recipe.image,
+          title: recipe.title,
+          time: recipe.time,
+          ingredients: recipe.ingredients,
+          instructions: recipe.instructions,
+        };
+      }
+    }
+  };
+  const recipe = await getRecipe();
+  return { props: { recipe } };
 }

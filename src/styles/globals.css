@@ -205,13 +205,13 @@ blockquote {
 }
 
 .btn.btn-primary {
-  background-color: #733f5f;
-  color: #b28fa7;
+  background-color: #630c42;
+  color: #fff;
   transition: all ease-in 0.3s;
   border: none;
 }
 .btn.btn-primary:hover {
-  background-color: #630c42;
+  background-color: #733f5f;
 }
 
 .btn.btn-secondary {
@@ -354,6 +354,7 @@ blockquote.card-ingredients {
 }
 
 .signUpPage {
+  height: 90vh;
   color: #630c42;
   display: flex;
   flex-direction: column;
