@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ingredients } from "../../../public/ingredients.json";
 import Select from "react-select";
 import { firestore, storage } from "../../../firebase/clientApp";
-import { collection, addDoc, doc, getDoc, setDoc } from "@firebase/firestore";
+import { collection, doc, getDoc, setDoc } from "@firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
-import { async } from "@firebase/util";
 export default function UpdateRecipe({ recipe }) {
   const router = useRouter();
   const [image, setImage] = useState(null);
@@ -25,8 +24,7 @@ export default function UpdateRecipe({ recipe }) {
     }
   };
 
-  const onRemoveImage = (event) => {
-    // event.target.previousElementSibling.value = null;
+  const onRemoveImage = () => {
     setFormData({
       ...formData,
       image: null,

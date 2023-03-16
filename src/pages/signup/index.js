@@ -29,7 +29,6 @@ export default function SignUp() {
   };
 
   const handleRegister = async () => {
-    event.preventDefault();
     const errors = validateUserFormData(userData);
     setErrors(errors);
     if (Object.keys(errors).length === 0) {

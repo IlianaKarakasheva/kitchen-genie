@@ -1,15 +1,11 @@
 import { firestore } from "../../firebase/clientApp";
 import { collection, query, getDocs } from "@firebase/firestore";
-import { useState, useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 import Link from "next/link";
-import { async } from "@firebase/util";
-
 export default function Home({ recipes }) {
-  const [searchInput, setSearchInput] = useState("");
+
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const [filterBy, setFilterBy] = useState("name");
-  const { user } = useAuth();
 
   function changePlaceholder() {
     const recipeSearch = document.getElementById("recipe-search");
