@@ -3,7 +3,7 @@ import { collection, query, getDocs } from "@firebase/firestore";
 import { useState } from "react";
 import Link from "next/link";
 export default function Home({ recipes }) {
-
+  const [searchInput, setSearchInput] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const [filterBy, setFilterBy] = useState("name");
 
@@ -20,7 +20,7 @@ export default function Home({ recipes }) {
 
   const handleSearchChange = (event) => {
     const newSearchValue = event.target.value;
-    setSearchInput(newSearchValue);
+    // setSearchInput(newSearchValue);
 
     if (newSearchValue === "") {
       setFilteredRecipes(recipes);

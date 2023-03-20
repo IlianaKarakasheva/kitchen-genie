@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 
 export default function SignUp() {
   const router = useRouter();
   const [errors, setErrors] = useState({});
   const [userData, setUserData] = useState({ email: "", password: "" });
-  const { user, register } = useAuth();
 
   const validateUserFormData = (formData) => {
     const errors = {};

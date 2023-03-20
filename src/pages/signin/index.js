@@ -22,7 +22,6 @@ export default function SignIn() {
   const handleLogin = async () => {
     const errors = validateUserFormData(data);
     setErrors(errors);
-    console.log(errors);
     if (Object.keys(errors).length === 0) {
       try {
         await login(data.email, data.password);
