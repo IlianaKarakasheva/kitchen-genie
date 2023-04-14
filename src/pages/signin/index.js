@@ -39,15 +39,15 @@ export default function SignIn() {
   }, [user]);
   return (
     <div className="signUpPage">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">
+      <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" className="sr-only">
         Email address
       </label>
       <input
         type="email"
         name="emaillog"
         id="inputEmail"
-        class="form-control"
+        className="form-control"
         placeholder="Enter email"
         value={data.email}
         onChange={(event) => {
@@ -64,14 +64,14 @@ export default function SignIn() {
         <span className="error text-danger"> {errors.emaillog}</span>
       )}
 
-      <label for="inputPassword" class="sr-only">
+      <label for="inputPassword" className="sr-only">
         Password
       </label>
       <input
         type="password"
         name="passlog"
         id="inputPassword"
-        class="form-control"
+        className="form-control"
         placeholder="Enter password"
         value={data.password}
         onChange={(event) => {
@@ -90,10 +90,10 @@ export default function SignIn() {
         <span className="error text-danger"> {errors.passlog}</span>
       )}
 
-      <div class="checkbox mb-3">
+      <div className="checkbox mb-3">
         <label></label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" onClick={handleLogin}>
+      <button className="btn btn-lg btn-primary btn-block" onClick={handleLogin}>
         SIGN IN
       </button>
     </div>

@@ -50,7 +50,7 @@ export default function SignUp() {
 
   return (
     <div className="signUpPage">
-      <h1 class="h3 mb-3 font-weight-normal">Sign up page</h1>
+      <h1 className="h3 mb-3 font-weight-normal">Sign up page</h1>
       <input
         type={"email"}
         placeholder="E-mail address"
@@ -63,7 +63,7 @@ export default function SignUp() {
             emailreg: null,
           });
         }}
-        class="form-control"
+        className="form-control"
       />
       {errors.emailreg && (
         <span className="error text-danger"> {errors.emailreg}</span>
@@ -80,7 +80,7 @@ export default function SignUp() {
             passreg: null,
           });
         }}
-        class="form-control"
+        className="form-control"
       />
       {errors.passreg && (
         <span className="error text-danger"> {errors.passreg}</span>

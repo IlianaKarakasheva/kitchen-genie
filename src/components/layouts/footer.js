@@ -4,7 +4,7 @@ export default function SiteFooter() {
   return (
     <footer className="navbar d-flex flex-wrap">
       <div className="container">
-        <Link href="/" class="navbar-brand d-flex align-items-center">
+        <Link href="/" className="navbar-brand d-flex align-items-center">
           <strong>
             <i className="bi bi-egg-fried me-2"></i>KitchenGenie
           </strong>

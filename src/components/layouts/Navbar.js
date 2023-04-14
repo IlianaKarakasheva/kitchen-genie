@@ -12,25 +12,25 @@ export default function Navbar() {
   };
 
   return (
-    <header class="navbar shadow-sm d-flex flex-wrap">
-      <div class="container">
-        <Link href="/" class="navbar-brand d-flex align-items-center">
+    <header className="navbar shadow-sm d-flex flex-wrap">
+      <div className="container">
+        <Link href="/" className="navbar-brand d-flex align-items-center">
           <strong>
             <i className="bi bi-egg-fried me-2"></i>KitchenGenie
           </strong>
         </Link>
-        <ul class=" navbar-nav">
-          <li class="navbar-item">
-            <Link href="/" class="navbar-link">
+        <ul className=" navbar-nav">
+          <li className="navbar-item">
+            <Link href="/" className="navbar-link">
               HOME
             </Link>
-            <Link href="/about" class="navbar-link">
+            <Link href="/about" className="navbar-link">
               ABOUT
             </Link>
           </li>
         </ul>
-        <ul class=" navbar-nav">
-          <li class="navbar-item">
+        <ul className=" navbar-nav">
+          <li className="navbar-item">
             {user ? (
               <>
                 <Link href="#" className="navbar-link me-2">

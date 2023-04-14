@@ -2,6 +2,7 @@ import { firestore } from "../../firebase/clientApp";
 import { collection, query, getDocs } from "@firebase/firestore";
 import { useState } from "react";
 import Link from "next/link";
+
 export default function Home({ recipes }) {
   const [searchInput, setSearchInput] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
@@ -41,22 +42,22 @@ export default function Home({ recipes }) {
   };
   return (
     <main>
-      <section class="py-5 text-center banner">
-        <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-bold">Гладни ли сте?</h1>
-            <p class="lead">
+      <section className="py-5 text-center banner">
+        <div className="row py-lg-5">
+          <div className="col-lg-6 col-md-8 mx-auto">
+            <h1 className="fw-bold">Гладни ли сте?</h1>
+            <p className="lead">
               Вижте какво имате в хладилника и разберете какво може да си
               сготвите
             </p>
-            <div class="input-group mb-3 search">
+            <div className="input-group mb-3 search">
               <button
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 type="button"
                 id="button-addon2"
                 onClick={changePlaceholder}
               >
-                <i class="bi bi-arrow-down-up"></i>
+                <i className="bi bi-arrow-down-up"></i>
               </button>
               <input
                 id="recipe-search"
@@ -72,13 +73,13 @@ export default function Home({ recipes }) {
         </div>
       </section>
 
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div className="album py-5 bg-light">
+        <div className="container">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {filteredRecipes.map((recipe) => {
               return (
-                <div class="col" key={recipe.id}>
-                  <div class="card shadow-sm">
+                <div className="col" key={recipe.id}>
+                  <div className="card shadow-sm">
                     <Link href={"/recipes/" + recipe.id}>
                       <img
                         src={`${recipe.image ? recipe.image : "nophoto.png"}`}
@@ -86,8 +87,8 @@ export default function Home({ recipes }) {
                         className="card-image img-fluid"
                       />
                     </Link>
-                    <div class="card-body text-black">
-                      <div class="card-text">
+                    <div className="card-body text-black">
+                      <div className="card-text">
                         <Link
                           href={"/recipes/" + recipe.id}
                           className="card-title"
@@ -106,15 +107,15 @@ export default function Home({ recipes }) {
                           {recipe?.ingredients.length > 5 && " etc."}
                         </blockquote>
                       </div>
-                      <div class="d-flex justify-content-between align-recipes-center mt-4 border-top pt-2">
+                      <div className="d-flex justify-content-between align-recipes-center mt-4 border-top pt-2">
                         <Link
                           href={"/recipes/" + recipe.id}
-                          class="btn btn-sm btn-secondary"
+                          className="btn btn-sm btn-secondary"
                         >
                           View
                         </Link>
-                        <small class="text-muted">
-                          <i class="bi bi-hourglass-split"></i>
+                        <small className="text-muted">
+                          <i className="bi bi-hourglass-split"></i>
                           {recipe.time}min
                         </small>
                       </div>
@@ -126,7 +127,7 @@ export default function Home({ recipes }) {
           </div>
         </div>
         <Link href="/new-recipe" className="float">
-          <i class="bi bi-plus"></i>
+          <i className="bi bi-plus"></i>
         </Link>
       </div>
     </main>

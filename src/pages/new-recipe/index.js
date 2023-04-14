@@ -132,7 +132,7 @@ export default function NewRecipe() {
               <button
                 type="submit"
                 onClick={onRemoveImage}
-                class="btn btn-sm btn-secondary col-2 me-2 mt-4 mb-3"
+                className="btn btn-sm btn-secondary col-2 me-2 mt-4 mb-3"
               >
                 Remove
               </button>
@@ -209,12 +209,12 @@ export default function NewRecipe() {
                 )}
               </div>
             </div>
-            <button type="submit" class="btn btn-sm btn-primary me-2 mt-4 mb-3">
+            <button type="submit" className="btn btn-sm btn-primary me-2 mt-4 mb-3">
               Cancel
             </button>
             <button
               type="button"
-              class="btn btn-sm btn-secondary me-2 mt-4 mb-3"
+              className="btn btn-sm btn-secondary me-2 mt-4 mb-3"
               onClick={onFormSubmit}
             >
               Submit Recipe
