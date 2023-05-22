@@ -45,10 +45,8 @@ export default function Home({ recipes }) {
       <section className="py-5 text-center banner">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-bold">Гладни ли сте?</h1>
-            <p className="lead">
-              Вижте какво имате в хладилника и разберете какво може да си
-              сготвите
+            <h1 className="fw-bold">Hungry for inspiration?</h1>
+            <p className="lead">Check your fridge and see what delicious meals you can create.
             </p>
             <div className="input-group mb-3 search">
               <button

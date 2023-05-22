@@ -30,8 +30,9 @@ export default function About() {
           h3 {
             font-size: 3rem;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 27px;
             color: #333;
+            padding-top: 27px;
           }
           .lead {
             font-size: 1.5rem;

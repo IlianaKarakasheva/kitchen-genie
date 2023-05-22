@@ -209,7 +209,11 @@ export default function NewRecipe() {
                 )}
               </div>
             </div>
-            <button type="submit" className="btn btn-sm btn-primary me-2 mt-4 mb-3">
+            <button
+              type="submit"
+              className="btn btn-sm btn-primary me-2 mt-4 mb-3"
+              onClick={() => router.push("/")}
+            >
               Cancel
             </button>
             <button

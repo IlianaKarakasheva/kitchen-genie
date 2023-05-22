@@ -239,6 +239,7 @@ export default function UpdateRecipe({ recipe }) {
               <button
                 type="submit"
                 className="btn btn-sm btn-primary me-2 mt-4 mb-3"
+                onClick={() => router.push("/recipes/" + id)}
               >
                 Cancel
               </button>
